@@ -1,15 +1,13 @@
 <script>
 	import { base } from '$app/paths';
 
-	const images = [
-		{ src: 'img-009.png', alt: 'Le Birk — Service' },
-		{ src: 'img-007.jpg', alt: 'Gericht mit Kräutersoße' },
-		{ src: 'img-015.jpg', alt: 'Dinner Event Atmosphäre' },
-		{ src: 'img-010.jpg', alt: 'Maultasche Fine Dining' },
-		{ src: 'img-008.jpg', alt: 'Taco auf Birkenstamm' },
-		{ src: 'img-018.jpg', alt: 'Gäste beim Dinner' },
-		{ src: 'img-006.jpg', alt: 'Das Le Birk Team' },
-		{ src: 'img-022.jpg', alt: 'Koch mit Hummer' },
+	const gallery = [
+		{ src: 'gallery-1.jpg', alt: 'Das Le Birk Team mit Hummer' },
+		{ src: 'gallery-2.jpg', alt: 'Dinner Event bei Kerzenlicht' },
+		{ src: 'gallery-3.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
+		{ src: 'gallery-4.jpg', alt: 'Hummer-Zubereitung' },
+		{ src: 'gallery-5.jpg', alt: 'In der Küche' },
+		{ src: 'gallery-6.jpg', alt: 'Le Birk Team Portrait' },
 	];
 </script>
 
@@ -34,13 +32,13 @@
 	</section>
 
 	<section class="featured">
-		<img src="{base}/images/img-009.png" alt="Le Birk — Service" />
+		<img src="{base}/images/hero.jpg" alt="Le Birk — Koch bei der Arbeit" />
 	</section>
 
 	<section id="impressionen" class="gallery">
 		<h2>Impressionen</h2>
 		<div class="grid">
-			{#each images.slice(1, 7) as image}
+			{#each gallery as image}
 				<div class="grid-item">
 					<img src="{base}/images/{image.src}" alt={image.alt} loading="lazy" />
 				</div>
@@ -53,8 +51,8 @@
 		<p>Coming Soon</p>
 	</section>
 
-	<section class="team-image">
-		<img src="{base}/images/img-022.jpg" alt="Koch mit Hummer" />
+	<section class="closer">
+		<img src="{base}/images/closer.jpg" alt="Le Birk Team" />
 	</section>
 
 	<footer id="kontakt">
@@ -100,13 +98,13 @@
 	}
 
 	.hero {
-		min-height: 60vh;
+		min-height: 55vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		padding: 6rem 2rem 4rem;
+		padding: 6rem 2rem 3rem;
 	}
 
 	h1 {
@@ -133,8 +131,8 @@
 	}
 
 	.featured {
-		padding: 0 2rem 4rem;
-		max-width: 900px;
+		padding: 0 2rem 5rem;
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
@@ -163,19 +161,24 @@
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 1rem;
+		gap: 0.75rem;
+	}
+
+	.grid-item {
+		overflow: hidden;
 	}
 
 	.grid-item img {
 		width: 100%;
-		height: 280px;
+		height: 300px;
 		object-fit: cover;
 		display: block;
-		transition: opacity 0.3s;
+		transition: transform 0.4s ease, opacity 0.3s;
 	}
 
-	.grid-item img:hover {
-		opacity: 0.85;
+	.grid-item:hover img {
+		transform: scale(1.03);
+		opacity: 0.9;
 	}
 
 	.konzept {
@@ -191,13 +194,13 @@
 		margin-top: 1rem;
 	}
 
-	.team-image {
+	.closer {
 		padding: 0 2rem 4rem;
-		max-width: 700px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
-	.team-image img {
+	.closer img {
 		width: 100%;
 		height: auto;
 		object-fit: cover;
@@ -231,7 +234,7 @@
 		}
 
 		.grid-item img {
-			height: 200px;
+			height: 220px;
 		}
 	}
 
@@ -241,7 +244,7 @@
 		}
 
 		.grid-item img {
-			height: 250px;
+			height: 280px;
 		}
 
 		nav {
