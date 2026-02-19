@@ -26,7 +26,7 @@
 	</header>
 
 	<section class="hero">
-		<h1>Le Birk</h1>
+		<img class="logo" src="{base}/images/logo-web.png" alt="Le Birk" />
 		<div class="divider"></div>
 		<p class="tagline">Eventgastronomie · Berlin</p>
 	</section>
@@ -107,13 +107,9 @@
 		padding: 6rem 2rem 3rem;
 	}
 
-	h1 {
-		font-family: var(--font-display);
-		font-weight: 300;
-		font-size: clamp(3.5rem, 12vw, 8rem);
-		letter-spacing: 0.08em;
-		color: var(--color-text);
-		line-height: 1;
+	.logo {
+		width: clamp(200px, 40vw, 400px);
+		height: auto;
 	}
 
 	.divider {
