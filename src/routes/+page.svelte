@@ -2,18 +2,18 @@
 	import { base } from '$app/paths';
 
 	const gallery = [
-		{ src: 'gallery-1.jpg', alt: 'Das Le Birk Team mit Hummer' },
-		{ src: 'gallery-2.jpg', alt: 'Dinner Event bei Kerzenlicht' },
-		{ src: 'gallery-3.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
-		{ src: 'gallery-4.jpg', alt: 'Hummer-Zubereitung' },
-		{ src: 'gallery-5.jpg', alt: 'In der Küche' },
-		{ src: 'gallery-6.jpg', alt: 'Le Birk Team Portrait' },
+		{ src: 'gallery-1.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
+		{ src: 'gallery-2.jpg', alt: 'Angerichteter Teller' },
+		{ src: 'gallery-3.jpg', alt: 'Hummer im Topf' },
+		{ src: 'gallery-4.jpg', alt: 'In der Küche' },
+		{ src: 'gallery-5.jpg', alt: 'Gericht von oben' },
+		{ src: 'gallery-6.jpg', alt: 'Angerichtetes Gericht' },
 	];
 </script>
 
 <svelte:head>
 	<title>Le Birk</title>
-	<meta name="description" content="Le Birk — Eventgastronomie Berlin" />
+	<meta name="description" content="Le Birk — Private Dining Events in Berlin" />
 </svelte:head>
 
 <main>
@@ -28,11 +28,24 @@
 	<section class="hero">
 		<img class="logo" src="{base}/images/logo-web.png" alt="Le Birk" />
 		<div class="divider"></div>
-		<p class="tagline">Eventgastronomie · Berlin</p>
+		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
 	<section class="featured">
-		<img src="{base}/images/hero.jpg" alt="Le Birk — Koch bei der Arbeit" />
+		<img src="{base}/images/hero.jpg" alt="Joschka und Lukas — Le Birk" />
+	</section>
+
+	<section id="konzept" class="konzept">
+		<h2>Konzept</h2>
+		<p class="konzept-text">
+			Le Birk bringt Fine Dining dahin, wo man es nicht erwartet. In ausgewählten Berliner Locations
+			verwandeln wir besondere Orte in intime Dinner-Erlebnisse — für kleine Runden, mit Menüs
+			die sich nach Saison und Laune richten.
+		</p>
+		<p class="konzept-text">
+			Kein festes Restaurant, kein fester Tisch. Nur gutes Essen, gute Leute und Abende,
+			die in Erinnerung bleiben.
+		</p>
 	</section>
 
 	<section id="impressionen" class="gallery">
@@ -46,16 +59,25 @@
 		</div>
 	</section>
 
-	<section id="konzept" class="konzept">
-		<h2>Konzept</h2>
-		<p>Coming Soon</p>
+	<section class="ueber-uns">
+		<h2>Über uns</h2>
+		<p>
+			Hinter Le Birk stehen Joschka Weins und Lukas Rosen — zwei Köche aus Leidenschaft
+			mit dem Anspruch, gehobene Küche aus dem klassischen Rahmen zu holen. Was als Idee
+			unter Freunden begann, ist heute eine Eventgastronomie, die Berlin ein bisschen anders
+			schmecken lässt.
+		</p>
 	</section>
 
 	<section class="closer">
-		<img src="{base}/images/closer.jpg" alt="Le Birk Team" />
+		<img src="{base}/images/closer.jpg" alt="Le Birk Dinner Atmosphäre" />
 	</section>
 
 	<footer id="kontakt">
+		<h2>Kontakt</h2>
+		<p class="contact-line">Anfragen & Buchungen</p>
+		<p class="contact-email">hello@lebirk.de</p>
+		<div class="footer-divider"></div>
 		<p class="footer-name">Le Birk</p>
 		<p class="footer-city">Berlin</p>
 	</footer>
@@ -138,6 +160,21 @@
 		object-fit: cover;
 	}
 
+	.konzept {
+		padding: 5rem 2rem;
+		max-width: 650px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.konzept-text {
+		font-family: var(--font-body);
+		font-size: 0.95rem;
+		line-height: 1.8;
+		color: var(--color-text);
+		margin-top: 1.5rem;
+	}
+
 	.gallery {
 		padding: 4rem 2rem;
 		max-width: 1100px;
@@ -150,7 +187,7 @@
 		font-size: 2rem;
 		letter-spacing: 0.08em;
 		text-align: center;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 		color: var(--color-text);
 	}
 
@@ -177,22 +214,24 @@
 		opacity: 0.9;
 	}
 
-	.konzept {
+	.ueber-uns {
 		padding: 5rem 2rem;
+		max-width: 650px;
+		margin: 0 auto;
 		text-align: center;
 	}
 
-	.konzept p {
-		font-family: var(--font-display);
-		font-style: italic;
-		font-size: 1.1rem;
-		color: var(--color-muted);
-		margin-top: 1rem;
+	.ueber-uns p {
+		font-family: var(--font-body);
+		font-size: 0.95rem;
+		line-height: 1.8;
+		color: var(--color-text);
+		margin-top: 1.5rem;
 	}
 
 	.closer {
-		padding: 0 2rem 4rem;
-		max-width: 800px;
+		padding: 2rem 2rem 4rem;
+		max-width: 900px;
 		margin: 0 auto;
 	}
 
@@ -206,6 +245,29 @@
 		padding: 4rem 2rem;
 		text-align: center;
 		border-top: 1px solid var(--color-border);
+	}
+
+	.contact-line {
+		font-family: var(--font-body);
+		font-size: 0.85rem;
+		color: var(--color-muted);
+		margin-top: 1rem;
+		letter-spacing: 0.05em;
+	}
+
+	.contact-email {
+		font-family: var(--font-display);
+		font-size: 1.3rem;
+		color: var(--color-text);
+		margin-top: 0.5rem;
+		letter-spacing: 0.03em;
+	}
+
+	.footer-divider {
+		width: 40px;
+		height: 1px;
+		background: var(--color-border);
+		margin: 2rem auto;
 	}
 
 	.footer-name {
