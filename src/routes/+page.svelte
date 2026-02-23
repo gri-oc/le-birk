@@ -37,11 +37,10 @@
 	</section>
 
 	<section id="konzept" class="konzept">
-		<h2>Konzept</h2>
+		<h2>Fine Dining, wo man es nicht erwartet.</h2>
 		<p class="konzept-text">
-			Le Birk bringt Fine Dining dahin, wo man es nicht erwartet. In ausgewählten Berliner Locations
-			verwandeln wir besondere Orte in intime Dinner-Erlebnisse — für kleine Runden, mit Menüs
-			die sich nach Saison und Laune richten.
+			In ausgewählten Berliner Locations verwandeln wir besondere Orte in intime
+			Dinner-Erlebnisse — für kleine Runden, mit Menüs die sich nach Saison und Laune richten.
 		</p>
 		<p class="konzept-text">
 			Kein festes Restaurant, kein fester Tisch. Nur gutes Essen, gute Leute und Abende,
@@ -50,7 +49,7 @@
 	</section>
 
 	<section id="impressionen" class="gallery">
-		<h2>Impressionen</h2>
+		<h2>Was auf den Tisch kommt.</h2>
 		<div class="grid">
 			{#each gallery as image}
 				<div class="grid-item">
@@ -61,12 +60,11 @@
 	</section>
 
 	<section class="ueber-uns">
-		<h2>Über uns</h2>
+		<h2>Zwei Köche, eine Idee.</h2>
 		<p>
-			Hinter Le Birk stehen Joschka Weins und Lukas Rosen — zwei Köche aus Leidenschaft
-			mit dem Anspruch, gehobene Küche aus dem klassischen Rahmen zu holen. Was als Idee
-			unter Freunden begann, ist heute eine Eventgastronomie, die Berlin ein bisschen anders
-			schmecken lässt.
+			Joschka Weins und Lukas Rosen — mit dem Anspruch, gehobene Küche aus dem
+			klassischen Rahmen zu holen. Was als Idee unter Freunden begann, ist heute eine
+			Eventgastronomie, die Berlin ein bisschen anders schmecken lässt.
 		</p>
 	</section>
 
@@ -75,7 +73,7 @@
 	</section>
 
 	<footer id="kontakt">
-		<h2>Kontakt</h2>
+		<h2>Lust auf einen Abend?</h2>
 		<p class="contact-line">Anfragen & Buchungen</p>
 		<p class="contact-email">hello@lebirk.de</p>
 		<div class="footer-spacer"></div>
