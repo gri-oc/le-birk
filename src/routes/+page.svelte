@@ -1,6 +1,6 @@
 <script>
 	import { base } from '$app/paths';
-	import { page } from '$app/state';
+	import { browser } from '$app/environment';
 
 	const fontOptions = [
 		{ id: 'cormorant', name: 'Cormorant Garamond', import: 'Cormorant+Garamond:wght@300;400;500;600' },
@@ -15,9 +15,14 @@
 		{ id: 'sorts-mill', name: 'Sorts Mill Goudy', import: 'Sorts+Mill+Goudy:ital@0;1' },
 	];
 
-	let fontParam = $derived(page.url.searchParams.get('font') || 'cormorant');
+	function getParam() {
+		if (!browser) return '';
+		return new URLSearchParams(window.location.search).get('font') || '';
+	}
+
+	let fontParam = $state(getParam());
 	let activeFont = $derived(fontOptions.find(f => f.id === fontParam) || fontOptions[0]);
-	let showSwitcher = $derived(page.url.searchParams.has('font'));
+	let showSwitcher = $derived(fontParam !== '');
 
 	const gallery = [
 		{ src: 'gallery-1.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
