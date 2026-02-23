@@ -37,7 +37,7 @@
 	</section>
 
 	<section id="konzept" class="konzept">
-		<h2>Fine Dining, wo man es nicht erwartet.</h2>
+		<h2>Konzept</h2>
 		<p class="konzept-text">
 			In ausgewählten Berliner Locations verwandeln wir besondere Orte in intime
 			Dinner-Erlebnisse — für kleine Runden, mit Menüs die sich nach Saison und Laune richten.
@@ -49,7 +49,7 @@
 	</section>
 
 	<section id="impressionen" class="gallery">
-		<h2>Was auf den Tisch kommt.</h2>
+		<h2>Impressionen</h2>
 		<div class="grid">
 			{#each gallery as image}
 				<div class="grid-item">
@@ -60,7 +60,7 @@
 	</section>
 
 	<section class="ueber-uns">
-		<h2>Zwei Köche, eine Idee.</h2>
+		<h2>Über uns</h2>
 		<p>
 			Joschka Weins und Lukas Rosen — mit dem Anspruch, gehobene Küche aus dem
 			klassischen Rahmen zu holen. Was als Idee unter Freunden begann, ist heute eine
@@ -73,7 +73,7 @@
 	</section>
 
 	<footer id="kontakt">
-		<h2>Lust auf einen Abend?</h2>
+		<h2>Kontakt</h2>
 		<p class="contact-line">Anfragen & Buchungen</p>
 		<p class="contact-email">hello@lebirk.de</p>
 		<div class="footer-spacer"></div>
@@ -104,7 +104,7 @@
 
 	nav a {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
+		font-size: 0.95rem;
 		letter-spacing: 0.1em;
 		color: var(--color-text);
 		text-decoration: none;
@@ -126,7 +126,7 @@
 	}
 
 	.logo {
-		width: clamp(150px, 28vw, 280px);
+		width: clamp(135px, 25vw, 250px);
 		height: auto;
 	}
 
