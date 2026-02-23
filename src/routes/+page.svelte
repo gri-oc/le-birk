@@ -11,6 +11,13 @@
 	];
 
 	function reveal(node, { delay = 0 } = {}) {
+		// Sofort sichtbar wenn schon im Viewport
+		const rect = node.getBoundingClientRect();
+		if (rect.top < window.innerHeight) {
+			node.classList.add('visible');
+			return { destroy() {} };
+		}
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
@@ -22,7 +29,7 @@
 					}
 				});
 			},
-			{ threshold: 0.15 }
+			{ threshold: 0.1 }
 		);
 		observer.observe(node);
 		return { destroy() { observer.unobserve(node); } };
