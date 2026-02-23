@@ -106,10 +106,9 @@
 
 	nav a {
 		font-family: var(--font-body);
-		font-size: 0.75rem;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		color: var(--color-muted);
+		font-size: 0.85rem;
+		letter-spacing: 0.1em;
+		color: var(--color-text);
 		text-decoration: none;
 		transition: color 0.3s;
 	}
@@ -129,7 +128,7 @@
 	}
 
 	.logo {
-		width: clamp(200px, 40vw, 400px);
+		width: clamp(150px, 28vw, 280px);
 		height: auto;
 	}
 
@@ -141,10 +140,9 @@
 	}
 
 	.tagline {
-		font-size: 0.8rem;
-		letter-spacing: 0.3em;
-		text-transform: uppercase;
-		color: var(--color-muted);
+		font-size: 0.85rem;
+		letter-spacing: 0.15em;
+		color: var(--color-text);
 	}
 
 	.featured {
@@ -249,7 +247,7 @@
 	.contact-line {
 		font-family: var(--font-body);
 		font-size: 0.85rem;
-		color: var(--color-muted);
+		color: var(--color-text);
 		margin-top: 1rem;
 		letter-spacing: 0.05em;
 	}
