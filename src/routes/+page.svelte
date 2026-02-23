@@ -178,10 +178,9 @@
 
 	h2 {
 		font-family: var(--font-display);
-		font-weight: 400;
-		font-size: 0.8rem;
-		letter-spacing: 0.35em;
-		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 2rem;
+		letter-spacing: 0.08em;
 		text-align: center;
 		margin-bottom: 2rem;
 		color: var(--color-text);
