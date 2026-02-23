@@ -184,7 +184,7 @@
 	}
 
 	.featured {
-		padding: 0 2rem 5rem;
+		padding: 0 2rem 4rem;
 		max-width: 800px;
 		margin: 0 auto;
 	}
@@ -196,7 +196,7 @@
 	}
 
 	.konzept {
-		padding: 2rem 2rem;
+		padding: 4rem 2rem;
 		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
@@ -249,7 +249,7 @@
 	}
 
 	.ueber-uns {
-		padding: 2rem 2rem;
+		padding: 4rem 2rem;
 		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
@@ -264,7 +264,7 @@
 	}
 
 	.closer {
-		padding: 2rem 2rem 4rem;
+		padding: 4rem 2rem;
 		max-width: 900px;
 		margin: 0 auto;
 	}
@@ -276,7 +276,7 @@
 	}
 
 	footer {
-		padding: 2rem 2rem;
+		padding: 4rem 2rem;
 		text-align: center;
 	}
 
@@ -297,7 +297,7 @@
 	}
 
 	.footer-spacer {
-		height: 3rem;
+		height: 5rem;
 	}
 
 	@media (max-width: 768px) {
