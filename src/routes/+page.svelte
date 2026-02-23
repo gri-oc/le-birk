@@ -14,6 +14,9 @@
 <svelte:head>
 	<title>Birk</title>
 	<meta name="description" content="Birk — Private Dining Events in Berlin" />
+	<link rel="icon" type="image/png" href="{base}/favicon.png" />
+	<link rel="icon" type="image/x-icon" href="{base}/favicon.ico" />
+	<link rel="apple-touch-icon" href="{base}/apple-touch-icon.png" />
 </svelte:head>
 
 <main>
