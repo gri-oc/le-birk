@@ -1,5 +1,23 @@
 <script>
 	import { base } from '$app/paths';
+	import { page } from '$app/state';
+
+	const fontOptions = [
+		{ id: 'cormorant', name: 'Cormorant Garamond', import: 'Cormorant+Garamond:wght@300;400;500;600' },
+		{ id: 'fraunces', name: 'Fraunces', import: 'Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500' },
+		{ id: 'instrument-serif', name: 'Instrument Serif', import: 'Instrument+Serif:ital@0;1' },
+		{ id: 'playfair', name: 'Playfair Display', import: 'Playfair+Display:wght@300;400;500;600' },
+		{ id: 'bodoni-moda', name: 'Bodoni Moda', import: 'Bodoni+Moda:opsz,wght@6..96,300;6..96,400;6..96,500' },
+		{ id: 'dm-serif', name: 'DM Serif Display', import: 'DM+Serif+Display' },
+		{ id: 'libre-caslon', name: 'Libre Caslon Condensed', import: 'Libre+Caslon+Condensed:wght@400;700' },
+		{ id: 'brygada', name: 'Brygada 1918', import: 'Brygada+1918:wght@300;400;500;600' },
+		{ id: 'newsreader', name: 'Newsreader', import: 'Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500' },
+		{ id: 'sorts-mill', name: 'Sorts Mill Goudy', import: 'Sorts+Mill+Goudy:ital@0;1' },
+	];
+
+	let fontParam = $derived(page.url.searchParams.get('font') || 'cormorant');
+	let activeFont = $derived(fontOptions.find(f => f.id === fontParam) || fontOptions[0]);
+	let showSwitcher = $derived(page.url.searchParams.has('font'));
 
 	const gallery = [
 		{ src: 'gallery-1.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
@@ -14,9 +32,23 @@
 <svelte:head>
 	<title>Le Birk</title>
 	<meta name="description" content="Le Birk — Private Dining Events in Berlin" />
+	<link href="https://fonts.googleapis.com/css2?family={activeFont.import}&display=swap" rel="stylesheet" />
 </svelte:head>
 
-<main>
+{#if showSwitcher}
+<div class="font-switcher">
+	<span class="switcher-label">Font:</span>
+	{#each fontOptions as font}
+		<a
+			href="{base}/?font={font.id}"
+			class="switcher-btn"
+			class:active={font.id === fontParam}
+		>{font.name}</a>
+	{/each}
+</div>
+{/if}
+
+<main style="--font-display: '{activeFont.name}', serif;">
 	<header>
 		<nav>
 			<a href="#impressionen">Impressionen</a>
@@ -87,6 +119,54 @@
 	main {
 		max-width: 100%;
 		overflow-x: hidden;
+	}
+
+	.font-switcher {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 200;
+		background: rgba(255, 255, 255, 0.95);
+		backdrop-filter: blur(10px);
+		border-top: 1px solid var(--color-border);
+		padding: 0.75rem 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.switcher-label {
+		font-family: var(--font-body);
+		font-size: 0.7rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+		margin-right: 0.5rem;
+	}
+
+	.switcher-btn {
+		font-family: var(--font-body);
+		font-size: 0.7rem;
+		padding: 0.35rem 0.7rem;
+		border: 1px solid var(--color-border);
+		border-radius: 2rem;
+		color: var(--color-muted);
+		text-decoration: none;
+		transition: all 0.2s;
+	}
+
+	.switcher-btn:hover {
+		color: var(--color-text);
+		border-color: var(--color-text);
+	}
+
+	.switcher-btn.active {
+		background: var(--color-text);
+		color: var(--color-bg);
+		border-color: var(--color-text);
 	}
 
 	header {
@@ -307,6 +387,16 @@
 
 		nav {
 			gap: 1.5rem;
+		}
+
+		.font-switcher {
+			padding: 0.5rem;
+			gap: 0.3rem;
+		}
+
+		.switcher-btn {
+			font-size: 0.6rem;
+			padding: 0.25rem 0.5rem;
 		}
 	}
 </style>
