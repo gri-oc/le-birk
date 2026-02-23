@@ -208,12 +208,6 @@
 		height: 300px;
 		object-fit: cover;
 		display: block;
-		transition: transform 0.4s ease, opacity 0.3s;
-	}
-
-	.grid-item:hover img {
-		transform: scale(1.03);
-		opacity: 0.9;
 	}
 
 	.ueber-uns {
