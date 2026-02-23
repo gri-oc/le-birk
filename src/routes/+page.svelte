@@ -20,8 +20,8 @@
 <main>
 	<header>
 		<nav>
-			<a href="#impressionen">Impressionen</a>
 			<a href="#konzept">Konzept</a>
+			<a href="#impressionen">Impressionen</a>
 			<a href="#kontakt">Kontakt</a>
 		</nav>
 	</header>
