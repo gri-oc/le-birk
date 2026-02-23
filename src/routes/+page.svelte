@@ -29,6 +29,7 @@
 			if (el.getBoundingClientRect().top < window.innerHeight) {
 				el.classList.add('visible');
 			} else {
+				el.classList.add('pending');
 				observer.observe(el);
 			}
 		});
@@ -106,7 +107,7 @@
 </main>
 
 <style>
-	:global(.reveal) {
+	:global(.reveal.pending) {
 		opacity: 0;
 		transform: translateY(25px);
 	}
