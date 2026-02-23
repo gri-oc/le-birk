@@ -176,6 +176,10 @@
 		margin: 0 auto;
 	}
 
+	.gallery h2 {
+		margin-bottom: 2rem;
+	}
+
 	h2 {
 		font-family: var(--font-display);
 		font-weight: 300;
