@@ -16,11 +16,6 @@
 	<meta name="description" content="Birk — Private Dining Events in Berlin" />
 </svelte:head>
 
-<div class="version-switch">
-	<a href="{base}/alt">ALT</a>
-	<a href="{base}/" class="active">NEU</a>
-</div>
-
 <main>
 	<header>
 		<nav>
@@ -85,36 +80,6 @@
 </main>
 
 <style>
-	.version-switch {
-		position: fixed;
-		top: 1.5rem;
-		right: 2rem;
-		z-index: 200;
-		display: flex;
-		gap: 0.5rem;
-	}
-
-	.version-switch a {
-		font-family: var(--font-body);
-		font-size: 0.7rem;
-		letter-spacing: 0.1em;
-		padding: 0.3rem 0.6rem;
-		text-decoration: none;
-		border: 1px solid var(--color-border);
-		transition: all 0.3s;
-	}
-
-	.version-switch a.active {
-		background: var(--color-text);
-		color: var(--color-bg);
-		border-color: var(--color-text);
-	}
-
-	.version-switch a:not(.active) {
-		color: var(--color-text);
-		background: var(--color-bg);
-	}
-
 	main {
 		max-width: 100%;
 		overflow-x: hidden;
