@@ -252,7 +252,7 @@
 
 	.contact-email {
 		font-family: var(--font-display);
-		font-size: 1.3rem;
+		font-size: 0.95rem;
 		color: var(--color-text);
 		margin-top: 0.5rem;
 		letter-spacing: 0.03em;
