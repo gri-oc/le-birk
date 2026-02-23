@@ -143,7 +143,7 @@
 		font-size: 0.9rem;
 		letter-spacing: 0.15em;
 		color: var(--color-text);
-		margin-top: 0.8rem;
+		margin-top: 1.5rem;
 	}
 
 	.featured {
