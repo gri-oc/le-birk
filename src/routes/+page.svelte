@@ -9,6 +9,24 @@
 		{ src: 'gallery-5.jpg', alt: 'Dish detail' },
 		{ src: 'gallery-6.jpg', alt: 'Plated course' },
 	];
+
+	function reveal(node, { delay = 0 } = {}) {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						setTimeout(() => {
+							node.classList.add('visible');
+						}, delay);
+						observer.unobserve(node);
+					}
+				});
+			},
+			{ threshold: 0.15 }
+		);
+		observer.observe(node);
+		return { destroy() { observer.unobserve(node); } };
+	}
 </script>
 
 <svelte:head>
@@ -33,11 +51,11 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<section class="featured">
+	<section class="featured reveal-fade" use:reveal>
 		<img src="{base}/images/hero.jpg" alt="Joschka and Lukas — Birk" />
 	</section>
 
-	<section id="concept" class="konzept">
+	<section id="concept" class="konzept reveal-fade" use:reveal>
 		<h2>concept</h2>
 		<p class="konzept-text">
 			In selected Berlin locations, we transform unique spaces into intimate dining
@@ -50,17 +68,17 @@
 	</section>
 
 	<section id="gallery" class="gallery">
-		<h2>gallery</h2>
+		<h2 class="reveal-fade" use:reveal>gallery</h2>
 		<div class="grid">
-			{#each gallery as image}
-				<div class="grid-item">
+			{#each gallery as image, i}
+				<div class="grid-item reveal-fade" use:reveal={{ delay: i * 120 }}>
 					<img src="{base}/images/{image.src}" alt={image.alt} loading="lazy" />
 				</div>
 			{/each}
 		</div>
 	</section>
 
-	<section class="ueber-uns">
+	<section class="ueber-uns reveal-fade" use:reveal>
 		<h2>about us</h2>
 		<p>
 			Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out
@@ -69,11 +87,11 @@
 		</p>
 	</section>
 
-	<section class="closer">
+	<section class="closer reveal-fade" use:reveal>
 		<img src="{base}/images/closer.jpg" alt="Birk Dinner" />
 	</section>
 
-	<footer id="contact">
+	<footer id="contact" class="reveal-fade" use:reveal>
 		<h2>contact</h2>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<p class="contact-email">hello@lebirk.de</p>
@@ -82,6 +100,17 @@
 </main>
 
 <style>
+	.reveal-fade {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 0.8s ease, transform 0.8s ease;
+	}
+
+	.reveal-fade.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
 	main {
 		max-width: 100%;
 		overflow-x: hidden;
