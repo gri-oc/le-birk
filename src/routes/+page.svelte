@@ -1,5 +1,6 @@
 <script>
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 
 	const gallery = [
 		{ src: 'gallery-1.jpg', alt: 'Taco bites on birch wood' },
@@ -9,6 +10,31 @@
 		{ src: 'gallery-5.jpg', alt: 'Dish detail' },
 		{ src: 'gallery-6.jpg', alt: 'Plated course' },
 	];
+
+	onMount(() => {
+		const targets = document.querySelectorAll('.reveal');
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const delay = parseInt(entry.target.dataset.delay || '0');
+						setTimeout(() => entry.target.classList.add('visible'), delay);
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.1 }
+		);
+		targets.forEach((el) => {
+			// Schon im Viewport? Sofort zeigen
+			if (el.getBoundingClientRect().top < window.innerHeight) {
+				el.classList.add('visible');
+			} else {
+				el.classList.add('hidden');
+				observer.observe(el);
+			}
+		});
+	});
 </script>
 
 <svelte:head>
@@ -33,11 +59,11 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<section class="featured">
+	<section class="featured reveal">
 		<img src="{base}/images/hero.jpg" alt="Joschka and Lukas — Birk" />
 	</section>
 
-	<section id="concept" class="konzept">
+	<section id="concept" class="konzept reveal">
 		<h2>concept</h2>
 		<p class="konzept-text">
 			In selected Berlin locations, we transform unique spaces into intimate dining
@@ -50,17 +76,17 @@
 	</section>
 
 	<section id="gallery" class="gallery">
-		<h2>gallery</h2>
+		<h2 class="reveal">gallery</h2>
 		<div class="grid">
 			{#each gallery as image, i}
-				<div class="grid-item">
+				<div class="grid-item reveal" data-delay={i * 150}>
 					<img src="{base}/images/{image.src}" alt={image.alt} loading="lazy" />
 				</div>
 			{/each}
 		</div>
 	</section>
 
-	<section class="ueber-uns">
+	<section class="ueber-uns reveal">
 		<h2>about us</h2>
 		<p>
 			Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out
@@ -69,11 +95,11 @@
 		</p>
 	</section>
 
-	<section class="closer">
+	<section class="closer reveal">
 		<img src="{base}/images/closer.jpg" alt="Birk Dinner" />
 	</section>
 
-	<footer id="contact">
+	<footer id="contact" class="reveal">
 		<h2>contact</h2>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<p class="contact-email">hello@lebirk.de</p>
@@ -82,6 +108,17 @@
 </main>
 
 <style>
+	:global(.reveal.hidden) {
+		opacity: 0;
+		transform: translateY(25px);
+	}
+
+	:global(.reveal.visible) {
+		opacity: 1;
+		transform: translateY(0);
+		transition: opacity 0.7s ease, transform 0.7s ease;
+	}
+
 	main {
 		max-width: 100%;
 		overflow-x: hidden;
