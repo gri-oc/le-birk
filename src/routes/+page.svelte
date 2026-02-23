@@ -8,6 +8,9 @@
 		{ src: 'gallery-4.jpg', alt: 'In der Küche' },
 		{ src: 'gallery-5.jpg', alt: 'Gericht von oben' },
 		{ src: 'gallery-6.jpg', alt: 'Angerichtetes Gericht' },
+		{ src: 'gallery-7.jpg', alt: 'Gericht Detail' },
+		{ src: 'gallery-8.jpg', alt: 'Hummer Zubereitung' },
+		{ src: 'gallery-9.jpg', alt: 'Angerichteter Teller' },
 	];
 </script>
 
