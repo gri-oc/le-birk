@@ -108,11 +108,13 @@
 <style>
 	:global(.reveal) {
 		opacity: 0;
+		transform: translateY(25px);
 	}
 
 	:global(.reveal.visible) {
 		opacity: 1;
-		transition: opacity 0.7s ease;
+		transform: translateY(0);
+		transition: opacity 0.7s ease, transform 0.7s ease;
 	}
 
 	main {
