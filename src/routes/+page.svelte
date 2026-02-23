@@ -58,7 +58,7 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<section class="featured reveal">
+	<section class="featured">
 		<img src="{base}/images/hero.jpg" alt="Joschka and Lukas — Birk" />
 	</section>
 
@@ -112,7 +112,7 @@
 		transform: translateY(25px);
 	}
 
-	:global(.reveal.visible) {
+	:global(.reveal.pending.visible) {
 		opacity: 1;
 		transform: translateY(0);
 		transition: opacity 0.7s ease, transform 0.7s ease;
