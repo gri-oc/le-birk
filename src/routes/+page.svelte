@@ -188,7 +188,7 @@
 	}
 
 	.konzept {
-		padding: 5rem 2rem;
+		padding: 2rem 2rem;
 		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
@@ -241,7 +241,7 @@
 	}
 
 	.ueber-uns {
-		padding: 5rem 2rem;
+		padding: 2rem 2rem;
 		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
@@ -268,7 +268,7 @@
 	}
 
 	footer {
-		padding: 4rem 2rem;
+		padding: 2rem 2rem;
 		text-align: center;
 	}
 
