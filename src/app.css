@@ -32,8 +32,7 @@ a, button, [role="button"], input[type="submit"], .grid-item {
 html, body {
 	height: 100%;
 	background: var(--color-bg) url('/le-birk/images/birch-bark.jpg') no-repeat center top;
-	background-size: cover;
-	background-attachment: fixed;
+	background-size: 500%;
 	color: var(--color-text);
 	font-family: var(--font-body);
 	font-weight: 300;
