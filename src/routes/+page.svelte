@@ -1,6 +1,30 @@
 <script>
 	import { base } from '$app/paths';
 
+	let lang = $state('de');
+
+	const t = $derived({
+		tagline: lang === 'de' ? 'Private Dining Events · Berlin' : 'Private Dining Events · Berlin',
+		navKonzept: lang === 'de' ? 'Konzept' : 'Concept',
+		navImpressionen: lang === 'de' ? 'Impressionen' : 'Gallery',
+		navKontakt: lang === 'de' ? 'Kontakt' : 'Contact',
+		heroAlt: lang === 'de' ? 'Joschka und Lukas — Le Birk' : 'Joschka and Lukas — Le Birk',
+		konzeptTitle: lang === 'de' ? 'Konzept' : 'Concept',
+		konzeptText1: lang === 'de'
+			? 'In ausgewählten Berliner Locations verwandeln wir besondere Orte in intime Dinner-Erlebnisse — für kleine Runden, mit Menüs die sich nach Saison und Laune richten.'
+			: 'In selected Berlin locations, we transform unique spaces into intimate dining experiences — for small groups, with menus that follow season and mood.',
+		konzeptText2: lang === 'de'
+			? 'Kein festes Restaurant, kein fester Tisch. Nur gutes Essen, gute Leute und Abende, die in Erinnerung bleiben.'
+			: 'No fixed restaurant, no fixed table. Just great food, great people and evenings to remember.',
+		impressionenTitle: lang === 'de' ? 'Impressionen' : 'Gallery',
+		ueberUnsTitle: lang === 'de' ? 'Über uns' : 'About us',
+		ueberUnsText: lang === 'de'
+			? 'Joschka Weins und Lukas Rosen — mit dem Anspruch, gehobene Küche aus dem klassischen Rahmen zu holen. Was als Idee unter Freunden begann, ist heute eine Eventgastronomie, die Berlin ein bisschen anders schmecken lässt.'
+			: 'Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out of its traditional setting. What started as an idea among friends is now an event gastronomy that gives Berlin a slightly different taste.',
+		kontaktTitle: lang === 'de' ? 'Kontakt' : 'Contact',
+		kontaktLine: lang === 'de' ? 'Anfragen & Buchungen' : 'Inquiries & Bookings',
+	});
+
 	const gallery = [
 		{ src: 'gallery-1.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
 		{ src: 'gallery-2.jpg', alt: 'Angerichteter Teller' },
@@ -14,42 +38,39 @@
 <svelte:head>
 	<title>Birk</title>
 	<meta name="description" content="Birk — Private Dining Events in Berlin" />
-
 </svelte:head>
 
 <main>
 	<header>
 		<nav>
-			<a href="#konzept">Konzept</a>
-			<a href="#impressionen">Impressionen</a>
-			<a href="#kontakt">Kontakt</a>
+			<a href="#konzept">{t.navKonzept}</a>
+			<a href="#impressionen">{t.navImpressionen}</a>
+			<a href="#kontakt">{t.navKontakt}</a>
 		</nav>
+		<div class="lang-switch">
+			<button class:active={lang === 'de'} onclick={() => lang = 'de'}>DE</button>
+			<button class:active={lang === 'en'} onclick={() => lang = 'en'}>EN</button>
+		</div>
 	</header>
 
 	<section class="hero">
-		<img class="logo" src="{base}/images/logo-web.png" alt="Le Birk" />
+		<img class="logo" src="{base}/images/logo-web.png" alt="Birk" />
 		<div class="divider"></div>
-		<p class="tagline">Private Dining Events · Berlin</p>
+		<p class="tagline">{t.tagline}</p>
 	</section>
 
 	<section class="featured">
-		<img src="{base}/images/hero.jpg" alt="Joschka und Lukas — Le Birk" />
+		<img src="{base}/images/hero.jpg" alt={t.heroAlt} />
 	</section>
 
 	<section id="konzept" class="konzept">
-		<h2>Konzept</h2>
-		<p class="konzept-text">
-			In ausgewählten Berliner Locations verwandeln wir besondere Orte in intime
-			Dinner-Erlebnisse — für kleine Runden, mit Menüs die sich nach Saison und Laune richten.
-		</p>
-		<p class="konzept-text">
-			Kein festes Restaurant, kein fester Tisch. Nur gutes Essen, gute Leute und Abende,
-			die in Erinnerung bleiben.
-		</p>
+		<h2>{t.konzeptTitle}</h2>
+		<p class="konzept-text">{t.konzeptText1}</p>
+		<p class="konzept-text">{t.konzeptText2}</p>
 	</section>
 
 	<section id="impressionen" class="gallery">
-		<h2>Impressionen</h2>
+		<h2>{t.impressionenTitle}</h2>
 		<div class="grid">
 			{#each gallery as image}
 				<div class="grid-item">
@@ -60,21 +81,17 @@
 	</section>
 
 	<section class="ueber-uns">
-		<h2>Über uns</h2>
-		<p>
-			Joschka Weins und Lukas Rosen — mit dem Anspruch, gehobene Küche aus dem
-			klassischen Rahmen zu holen. Was als Idee unter Freunden begann, ist heute eine
-			Eventgastronomie, die Berlin ein bisschen anders schmecken lässt.
-		</p>
+		<h2>{t.ueberUnsTitle}</h2>
+		<p>{t.ueberUnsText}</p>
 	</section>
 
 	<section class="closer">
-		<img src="{base}/images/closer.jpg" alt="Le Birk Dinner Atmosphäre" />
+		<img src="{base}/images/closer.jpg" alt="Birk Dinner" />
 	</section>
 
 	<footer id="kontakt">
-		<h2>Kontakt</h2>
-		<p class="contact-line">Anfragen & Buchungen</p>
+		<h2>{t.kontaktTitle}</h2>
+		<p class="contact-line">{t.kontaktLine}</p>
 		<p class="contact-email">hello@lebirk.de</p>
 		<div class="footer-spacer"></div>
 	</footer>
@@ -94,6 +111,7 @@
 		padding: 1.5rem 2rem;
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		background: linear-gradient(to bottom, var(--color-bg), transparent);
 	}
 
@@ -112,6 +130,32 @@
 	}
 
 	nav a:hover {
+		color: var(--color-text);
+	}
+
+	.lang-switch {
+		position: absolute;
+		right: 2rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.lang-switch button {
+		font-family: var(--font-body);
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		background: none;
+		border: none;
+		color: var(--color-border);
+		padding: 0.2rem 0.4rem;
+		transition: color 0.3s;
+	}
+
+	.lang-switch button.active {
+		color: var(--color-text);
+	}
+
+	.lang-switch button:hover {
 		color: var(--color-text);
 	}
 
@@ -284,6 +328,5 @@
 		nav {
 			gap: 1.5rem;
 		}
-
 	}
 </style>
