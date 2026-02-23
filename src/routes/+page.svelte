@@ -301,6 +301,27 @@
 	}
 
 	@media (max-width: 768px) {
+		.hero {
+			min-height: 45vh;
+			padding: 5rem 1.5rem 2rem;
+		}
+
+		.tagline {
+			font-size: 0.8rem;
+		}
+
+		.featured {
+			padding: 0 0.5rem 3rem;
+		}
+
+		.konzept {
+			padding: 3rem 1.2rem;
+		}
+
+		.gallery {
+			padding: 3rem 0.5rem;
+		}
+
 		.grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -308,9 +329,46 @@
 		.grid-item img {
 			height: 200px;
 		}
+
+		.ueber-uns {
+			padding: 3rem 1.2rem;
+		}
+
+		.closer {
+			padding: 3rem 0.5rem;
+		}
+
+		footer {
+			padding: 3rem 1.2rem;
+		}
+
+		h2 {
+			font-size: 1.1rem;
+		}
 	}
 
 	@media (max-width: 480px) {
+		.hero {
+			min-height: 40vh;
+			padding: 4.5rem 1rem 1.5rem;
+		}
+
+		.featured {
+			padding: 0 0.25rem 2.5rem;
+		}
+
+		.konzept {
+			padding: 2.5rem 1rem;
+		}
+
+		.konzept-text {
+			font-size: 0.82rem;
+		}
+
+		.gallery {
+			padding: 2.5rem 0.25rem;
+		}
+
 		.grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -319,8 +377,33 @@
 			height: 160px;
 		}
 
+		.ueber-uns {
+			padding: 2.5rem 1rem;
+		}
+
+		.ueber-uns p {
+			font-size: 0.82rem;
+		}
+
+		.closer {
+			padding: 2.5rem 0.25rem;
+		}
+
+		footer {
+			padding: 2.5rem 1rem;
+		}
+
 		nav {
 			gap: 1.5rem;
+			font-size: 0.8rem;
+		}
+
+		h2 {
+			font-size: 1rem;
+		}
+
+		.footer-spacer {
+			height: 3rem;
 		}
 	}
 </style>
