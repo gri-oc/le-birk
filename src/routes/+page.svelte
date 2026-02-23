@@ -185,8 +185,8 @@
 
 	h2 {
 		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: 2rem;
+		font-weight: 800;
+		font-size: 1.3rem;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		text-align: center;
