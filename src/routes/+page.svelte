@@ -121,9 +121,7 @@
 		<h2>Kontakt</h2>
 		<p class="contact-line">Anfragen & Buchungen</p>
 		<p class="contact-email">hello@lebirk.de</p>
-		<div class="footer-divider"></div>
-		<p class="footer-name">Le Birk</p>
-		<p class="footer-city">Berlin</p>
+		<div class="footer-spacer"></div>
 	</footer>
 </main>
 
@@ -355,27 +353,8 @@
 		letter-spacing: 0.03em;
 	}
 
-	.footer-divider {
-		width: 40px;
-		height: 1px;
-		background: var(--color-border);
-		margin: 2rem auto;
-	}
-
-	.footer-name {
-		font-family: var(--font-display);
-		font-size: 1.5rem;
-		font-weight: 400;
-		letter-spacing: 0.08em;
-		color: var(--color-text);
-	}
-
-	.footer-city {
-		font-size: 0.75rem;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		color: var(--color-muted);
-		margin-top: 0.5rem;
+	.footer-spacer {
+		height: 3rem;
 	}
 
 	@media (max-width: 768px) {
