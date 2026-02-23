@@ -138,7 +138,7 @@
 	}
 
 	.tagline {
-		font-size: 0.85rem;
+		font-size: 0.95rem;
 		letter-spacing: 0.15em;
 		color: var(--color-text);
 	}
@@ -179,7 +179,7 @@
 	h2 {
 		font-family: var(--font-display);
 		font-weight: 300;
-		font-size: 0.95rem;
+		font-size: 2rem;
 		letter-spacing: 0.08em;
 		text-align: center;
 		margin-bottom: 2rem;
