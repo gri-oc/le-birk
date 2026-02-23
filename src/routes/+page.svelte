@@ -26,11 +26,9 @@
 			{ threshold: 0.1 }
 		);
 		targets.forEach((el) => {
-			// Schon im Viewport? Sofort zeigen
 			if (el.getBoundingClientRect().top < window.innerHeight) {
 				el.classList.add('visible');
 			} else {
-				el.classList.add('hidden');
 				observer.observe(el);
 			}
 		});
@@ -108,7 +106,7 @@
 </main>
 
 <style>
-	:global(.reveal.hidden) {
+	:global(.reveal) {
 		opacity: 0;
 		transform: translateY(25px);
 	}
