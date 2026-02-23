@@ -239,7 +239,15 @@
 	footer {
 		padding: 4rem 2rem;
 		text-align: center;
-		border-top: 1px solid var(--color-border);
+	}
+
+	footer::before {
+		content: '';
+		display: block;
+		width: 50px;
+		height: 1px;
+		background: var(--color-border);
+		margin: 0 auto 2rem;
 	}
 
 	.contact-line {
