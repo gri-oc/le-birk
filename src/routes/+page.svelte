@@ -292,17 +292,17 @@
 		}
 
 		.grid-item img {
-			height: 220px;
+			height: 200px;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.grid {
-			grid-template-columns: 1fr;
+			grid-template-columns: repeat(2, 1fr);
 		}
 
 		.grid-item img {
-			height: 280px;
+			height: 160px;
 		}
 
 		nav {
