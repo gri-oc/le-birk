@@ -36,7 +36,7 @@
 	</section>
 
 	<section id="concept" class="konzept">
-		<h2>Concept</h2>
+		<h2>concept</h2>
 		<p class="konzept-text">
 			In selected Berlin locations, we transform unique spaces into intimate dining
 			experiences — for small groups, with menus that follow season and mood.
@@ -48,7 +48,7 @@
 	</section>
 
 	<section id="gallery" class="gallery">
-		<h2>Gallery</h2>
+		<h2>gallery</h2>
 		<div class="grid">
 			{#each gallery as image}
 				<div class="grid-item">
@@ -59,7 +59,7 @@
 	</section>
 
 	<section class="ueber-uns">
-		<h2>About us</h2>
+		<h2>about us</h2>
 		<p>
 			Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out
 			of its traditional setting. What started as an idea among friends is now an event
@@ -72,7 +72,7 @@
 	</section>
 
 	<footer id="contact">
-		<h2>Contact</h2>
+		<h2>contact</h2>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<p class="contact-email">hello@lebirk.de</p>
 		<div class="footer-spacer"></div>
@@ -182,7 +182,7 @@
 		font-size: 2rem;
 		letter-spacing: 0.08em;
 		text-align: center;
-		margin-bottom: 2rem;
+		margin-bottom: 0.8rem;
 		color: var(--color-text);
 	}
 
