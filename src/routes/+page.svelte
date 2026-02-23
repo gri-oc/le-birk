@@ -24,6 +24,12 @@
 	let activeFont = $derived(fontOptions.find(f => f.id === fontParam) || fontOptions[0]);
 	let showSwitcher = $derived(fontParam !== '');
 
+	$effect(() => {
+		if (browser && activeFont) {
+			document.documentElement.style.setProperty('--font-display', `'${activeFont.name}', serif`);
+		}
+	});
+
 	const gallery = [
 		{ src: 'gallery-1.jpg', alt: 'Taco-Häppchen auf Birkenstamm' },
 		{ src: 'gallery-2.jpg', alt: 'Angerichteter Teller' },
@@ -48,12 +54,13 @@
 			href="{base}/?font={font.id}"
 			class="switcher-btn"
 			class:active={font.id === fontParam}
+			data-sveltekit-reload
 		>{font.name}</a>
 	{/each}
 </div>
 {/if}
 
-<main style="--font-display: '{activeFont.name}', serif;">
+<main>
 	<header>
 		<nav>
 			<a href="#impressionen">Impressionen</a>
