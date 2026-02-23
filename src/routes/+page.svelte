@@ -104,7 +104,7 @@
 
 	nav a {
 		font-family: var(--font-body);
-		font-size: 0.95rem;
+		font-size: 0.8rem;
 		letter-spacing: 0.1em;
 		color: var(--color-text);
 		text-decoration: none;
@@ -138,7 +138,7 @@
 	}
 
 	.tagline {
-		font-size: 0.95rem;
+		font-size: 0.8rem;
 		letter-spacing: 0.15em;
 		color: var(--color-text);
 	}
@@ -164,7 +164,7 @@
 
 	.konzept-text {
 		font-family: var(--font-body);
-		font-size: 0.95rem;
+		font-size: 0.8rem;
 		line-height: 1.8;
 		color: var(--color-text);
 		margin-top: 1.5rem;
@@ -218,7 +218,7 @@
 
 	.ueber-uns p {
 		font-family: var(--font-body);
-		font-size: 0.95rem;
+		font-size: 0.8rem;
 		line-height: 1.8;
 		color: var(--color-text);
 		margin-top: 1.5rem;
@@ -252,7 +252,7 @@
 
 	.contact-line {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
+		font-size: 0.8rem;
 		color: var(--color-text);
 		margin-top: 1rem;
 		letter-spacing: 0.05em;
