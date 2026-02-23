@@ -132,7 +132,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background: linear-gradient(to bottom, var(--color-bg), transparent);
+		background: none;
 	}
 
 	nav {
