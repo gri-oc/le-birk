@@ -9,33 +9,6 @@
 		{ src: 'gallery-5.jpg', alt: 'Dish detail' },
 		{ src: 'gallery-6.jpg', alt: 'Plated course' },
 	];
-
-	function reveal(node, { delay = 0 } = {}) {
-		// Klasse erst client-side setzen (SSR rendert sichtbar)
-		node.classList.add('reveal-ready');
-
-		const rect = node.getBoundingClientRect();
-		if (rect.top < window.innerHeight) {
-			requestAnimationFrame(() => node.classList.add('visible'));
-			return { destroy() {} };
-		}
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						setTimeout(() => {
-							node.classList.add('visible');
-						}, delay);
-						observer.unobserve(node);
-					}
-				});
-			},
-			{ threshold: 0.1 }
-		);
-		observer.observe(node);
-		return { destroy() { observer.unobserve(node); } };
-	}
 </script>
 
 <svelte:head>
@@ -60,11 +33,11 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<section class="featured" use:reveal>
+	<section class="featured">
 		<img src="{base}/images/hero.jpg" alt="Joschka and Lukas — Birk" />
 	</section>
 
-	<section id="concept" class="konzept" use:reveal>
+	<section id="concept" class="konzept">
 		<h2>concept</h2>
 		<p class="konzept-text">
 			In selected Berlin locations, we transform unique spaces into intimate dining
@@ -77,17 +50,17 @@
 	</section>
 
 	<section id="gallery" class="gallery">
-		<h2 class="reveal-fade" use:reveal>gallery</h2>
+		<h2>gallery</h2>
 		<div class="grid">
 			{#each gallery as image, i}
-				<div class="grid-item" use:reveal={{ delay: i * 120 }}>
+				<div class="grid-item">
 					<img src="{base}/images/{image.src}" alt={image.alt} loading="lazy" />
 				</div>
 			{/each}
 		</div>
 	</section>
 
-	<section class="ueber-uns" use:reveal>
+	<section class="ueber-uns">
 		<h2>about us</h2>
 		<p>
 			Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out
@@ -96,11 +69,11 @@
 		</p>
 	</section>
 
-	<section class="closer" use:reveal>
+	<section class="closer">
 		<img src="{base}/images/closer.jpg" alt="Birk Dinner" />
 	</section>
 
-	<footer id="contact" class="reveal-fade" use:reveal>
+	<footer id="contact">
 		<h2>contact</h2>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<p class="contact-email">hello@lebirk.de</p>
@@ -109,17 +82,6 @@
 </main>
 
 <style>
-	:global(.reveal-ready) {
-		opacity: 0;
-		transform: translateY(30px);
-		transition: opacity 0.8s ease, transform 0.8s ease;
-	}
-
-	:global(.reveal-ready.visible) {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
 	main {
 		max-width: 100%;
 		overflow-x: hidden;
