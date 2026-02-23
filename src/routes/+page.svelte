@@ -261,8 +261,8 @@
 	}
 
 	.contact-email {
-		font-family: var(--font-display);
-		font-size: 1.3rem;
+		font-family: var(--font-body);
+		font-size: 0.9rem;
 		color: var(--color-text);
 		margin-top: 0.5rem;
 		letter-spacing: 0.03em;
