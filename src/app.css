@@ -32,7 +32,7 @@ a, button, [role="button"], input[type="submit"], .grid-item {
 html, body {
 	height: 100%;
 	background: var(--color-bg) url('/le-birk/images/birch-bark.jpg') repeat;
-	background-size: 800px;
+	background-size: 1000px;
 	color: var(--color-text);
 	font-family: var(--font-body);
 	font-weight: 300;
