@@ -101,7 +101,7 @@
 	<footer id="contact" class="reveal">
 		<h2>contact</h2>
 		<p class="contact-line">Inquiries & Bookings</p>
-		<p class="contact-email">hello@lebirk.de</p>
+		<a class="contact-email" href="mailto:hello@lebirk.de">hello@lebirk.de</a>
 		<div class="footer-spacer"></div>
 	</footer>
 </main>
@@ -293,6 +293,7 @@
 		color: var(--color-text);
 		margin-top: 0.5rem;
 		letter-spacing: 0.03em;
+		text-decoration: none;
 	}
 
 	.footer-spacer {
