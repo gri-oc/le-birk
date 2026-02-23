@@ -192,6 +192,7 @@
 		text-align: center;
 		margin-bottom: 0.8rem;
 		color: var(--color-text);
+		display: none;
 	}
 
 	.grid {
