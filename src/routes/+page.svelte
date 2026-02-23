@@ -19,9 +19,9 @@
 <main>
 	<header>
 		<nav>
-			<a href="#concept">Concept</a>
-			<a href="#gallery">Gallery</a>
-			<a href="#contact">Contact</a>
+			<a href="#concept">concept</a>
+			<a href="#gallery">gallery</a>
+			<a href="#contact">contact</a>
 		</nav>
 	</header>
 
