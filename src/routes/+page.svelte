@@ -107,15 +107,15 @@
 </main>
 
 <style>
-	.reveal-fade {
-		opacity: 0;
-		transform: translateY(30px);
-		transition: opacity 0.8s ease, transform 0.8s ease;
+	:global(.reveal-fade) {
+		opacity: 0 !important;
+		transform: translateY(30px) !important;
+		transition: opacity 0.8s ease, transform 0.8s ease !important;
 	}
 
-	.reveal-fade.visible {
-		opacity: 1;
-		transform: translateY(0);
+	:global(.reveal-fade.visible) {
+		opacity: 1 !important;
+		transform: translateY(0) !important;
 	}
 
 	main {
