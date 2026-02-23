@@ -30,7 +30,6 @@
 
 	<section class="hero">
 		<img class="logo" src="{base}/images/logo-web.png" alt="Birk" />
-		<div class="divider"></div>
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
@@ -144,6 +143,7 @@
 		font-size: 0.9rem;
 		letter-spacing: 0.15em;
 		color: var(--color-text);
+		margin-top: 0.8rem;
 	}
 
 	.featured {
@@ -241,15 +241,6 @@
 	footer {
 		padding: 4rem 2rem;
 		text-align: center;
-	}
-
-	footer::before {
-		content: '';
-		display: block;
-		width: 50px;
-		height: 1px;
-		background: var(--color-border);
-		margin: 0 auto 2rem;
 	}
 
 	.contact-line {
