@@ -11,10 +11,12 @@
 	];
 
 	function reveal(node, { delay = 0 } = {}) {
-		// Sofort sichtbar wenn schon im Viewport
+		// Klasse erst client-side setzen (SSR rendert sichtbar)
+		node.classList.add('reveal-ready');
+
 		const rect = node.getBoundingClientRect();
 		if (rect.top < window.innerHeight) {
-			node.classList.add('visible');
+			requestAnimationFrame(() => node.classList.add('visible'));
 			return { destroy() {} };
 		}
 
@@ -58,11 +60,11 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<section class="featured reveal-fade" use:reveal>
+	<section class="featured" use:reveal>
 		<img src="{base}/images/hero.jpg" alt="Joschka and Lukas — Birk" />
 	</section>
 
-	<section id="concept" class="konzept reveal-fade" use:reveal>
+	<section id="concept" class="konzept" use:reveal>
 		<h2>concept</h2>
 		<p class="konzept-text">
 			In selected Berlin locations, we transform unique spaces into intimate dining
@@ -78,14 +80,14 @@
 		<h2 class="reveal-fade" use:reveal>gallery</h2>
 		<div class="grid">
 			{#each gallery as image, i}
-				<div class="grid-item reveal-fade" use:reveal={{ delay: i * 120 }}>
+				<div class="grid-item" use:reveal={{ delay: i * 120 }}>
 					<img src="{base}/images/{image.src}" alt={image.alt} loading="lazy" />
 				</div>
 			{/each}
 		</div>
 	</section>
 
-	<section class="ueber-uns reveal-fade" use:reveal>
+	<section class="ueber-uns" use:reveal>
 		<h2>about us</h2>
 		<p>
 			Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out
@@ -94,7 +96,7 @@
 		</p>
 	</section>
 
-	<section class="closer reveal-fade" use:reveal>
+	<section class="closer" use:reveal>
 		<img src="{base}/images/closer.jpg" alt="Birk Dinner" />
 	</section>
 
@@ -107,15 +109,15 @@
 </main>
 
 <style>
-	:global(.reveal-fade) {
-		opacity: 0 !important;
-		transform: translateY(30px) !important;
-		transition: opacity 0.8s ease, transform 0.8s ease !important;
+	:global(.reveal-ready) {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 0.8s ease, transform 0.8s ease;
 	}
 
-	:global(.reveal-fade.visible) {
-		opacity: 1 !important;
-		transform: translateY(0) !important;
+	:global(.reveal-ready.visible) {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
 	main {
