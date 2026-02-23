@@ -12,8 +12,8 @@
 </script>
 
 <svelte:head>
-	<title>Le Birk</title>
-	<meta name="description" content="Le Birk — Private Dining Events in Berlin" />
+	<title>Birk</title>
+	<meta name="description" content="Birk — Private Dining Events in Berlin" />
 
 </svelte:head>
 
