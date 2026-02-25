@@ -82,7 +82,8 @@
 
 <style>
 	main {
-		max-width: 100%;
+		max-width: 720px;
+		margin: 0 auto;
 		overflow-x: hidden;
 	}
 
