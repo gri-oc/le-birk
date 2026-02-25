@@ -1,13 +1,12 @@
 <script>
 	import { base } from '$app/paths';
-
-	const slides = [
-		{ src: 'slide-1.jpg', alt: 'Lobster rolls' },
-		{ src: 'slide-2.jpg', alt: 'Taco on birch wood' },
-		{ src: 'slide-3.jpg', alt: 'Chef cooking' },
-		{ src: 'slide-4.jpg', alt: 'Plated dish' },
-		{ src: 'slide-5.jpg', alt: 'Dish detail' },
-		{ src: 'slide-6.jpg', alt: 'Croquettes' },
+	const gallery = [
+		{ src: 'gallery-1.jpg', alt: 'Taco bites on birch wood' },
+		{ src: 'gallery-2.jpg', alt: 'Plated dish' },
+		{ src: 'gallery-3.jpg', alt: 'Lobster in pot' },
+		{ src: 'gallery-4.jpg', alt: 'In the kitchen' },
+		{ src: 'gallery-5.jpg', alt: 'Dish detail' },
+		{ src: 'gallery-6.jpg', alt: 'Plated course' },
 	];
 </script>
 
@@ -20,290 +19,354 @@
 </svelte:head>
 
 <main>
-	<!-- Logo + Tagline -->
+	<header>
+		<nav>
+			<a href="#concept">concept</a>
+			<a href="#gallery">gallery</a>
+			<a href="#contact">contact</a>
+		</nav>
+	</header>
+
 	<section class="hero">
 		<img class="logo" src="{base}/images/logo-web.png" alt="Birk" />
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<!-- Hero: grüner Teller, edge-to-edge, schmal -->
 	<section class="featured">
-		<img src="{base}/images/hero.jpg" alt="Green dish with cucumber" />
+		<img src="{base}/images/hero.jpg" alt="Joschka and Lukas — Birk" />
 	</section>
 
-	<!-- Slider: Hochformat-Bilder, 4. angeschnitten -->
-	<section class="slider">
-		<div class="slider-track">
-			{#each slides as slide}
-				<div class="slider-item">
-					<img src="{base}/images/{slide.src}" alt={slide.alt} loading="lazy" />
+	<section id="concept" class="konzept">
+		<h2>concept</h2>
+		<p class="konzept-text">
+			In selected Berlin locations, we transform unique spaces into intimate dining
+			experiences — for small groups, with menus that follow season and mood.
+		</p>
+		<p class="konzept-text">
+			No fixed restaurant, no fixed table. Just great food, great people and evenings
+			to remember.
+		</p>
+	</section>
+
+	<section id="gallery" class="gallery">
+		<h2>gallery</h2>
+		<div class="grid">
+			{#each gallery as image, i}
+				<div class="grid-item">
+					<img src="{base}/images/{image.src}" alt={image.alt} loading="lazy" />
 				</div>
 			{/each}
 		</div>
 	</section>
 
-	<!-- Concept Text -->
-	<section class="konzept">
-		<p class="konzept-text">
-			In selected Berlin locations, we transform unique spaces
-			into intimate dining experiences — for small groups,
-			with menus that follow season and mood.
-		</p>
-		<p class="konzept-text">
-			No fixed restaurant, no fixed table. Just great food,
-			great people and evenings to remember.
+	<section class="ueber-uns">
+		<h2>about us</h2>
+		<p>
+			Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out
+			of its traditional setting. What started as an idea among friends is now an event
+			gastronomy that gives Berlin a slightly different taste.
 		</p>
 	</section>
 
-	<!-- Event Foto: Raum, S/W, edge-to-edge -->
-	<section class="event-photo">
-		<img src="{base}/images/event.jpg" alt="Birk dinner event" />
-	</section>
-
-	<!-- Portrait + About Text -->
-	<section class="portrait-section">
-		<img class="portrait-img" src="{base}/images/portrait.jpg" alt="Joschka Weins and Lukas Rosen" />
-		<p class="portrait-text">
-			Joschka Weins and Lukas Rosen — driven by the ambition to
-			take fine dining out of its traditional setting. What started as an
-			idea among friends is now an event gastronomy that gives Berlin
-			a slightly different taste.
-		</p>
-	</section>
-
-	<!-- Closer: Hummer, edge-to-edge -->
 	<section class="closer">
-		<img src="{base}/images/closer.jpg" alt="Lobster cooking" />
+		<img src="{base}/images/closer.jpg" alt="Birk Dinner" />
 	</section>
 
-	<!-- Footer -->
 	<footer id="contact">
-		<p class="contact-label">contact</p>
+		<h2>contact</h2>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<a class="contact-email" href="mailto:hello@lebirk.de">hello@lebirk.de</a>
-		<img class="footer-trident" src="{base}/images/trident.png" alt="Birk" />
+		<div class="footer-spacer"></div>
 	</footer>
 </main>
 
 <style>
 	main {
-		max-width: 720px;
-		margin: 0 auto;
+		max-width: 100%;
 		overflow-x: hidden;
 	}
 
-	/* === HERO (Logo) === */
+	header {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 100;
+		padding: 1.5rem 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: none;
+	}
+
+	nav {
+		display: flex;
+		gap: 2.5rem;
+	}
+
+	nav a {
+		font-family: var(--font-body);
+		font-size: 0.9rem;
+		letter-spacing: 0.1em;
+		color: var(--color-text);
+		text-decoration: none;
+		transition: color 0.3s;
+	}
+
+	nav a:hover {
+		color: var(--color-text);
+	}
+
 	.hero {
+		min-height: 55vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		padding: 2.5rem 2rem 1.5rem;
+		padding: 6rem 2rem 3rem;
 	}
 
 	.logo {
-		width: clamp(130px, 22vw, 200px);
+		width: clamp(135px, 25vw, 250px);
 		height: auto;
 	}
 
-	.tagline {
-		font-family: var(--font-body);
-		font-size: 0.75rem;
-		letter-spacing: 0.12em;
-		color: var(--color-text);
-		margin-top: 0.4rem;
+	.divider {
+		width: 50px;
+		height: 1px;
+		background: var(--color-border);
+		margin: 2rem 0;
 	}
 
-	/* === FEATURED (Hero Teller) — edge-to-edge, schmal === */
+	.tagline {
+		font-size: 0.9rem;
+		letter-spacing: 0.15em;
+		color: var(--color-text);
+		margin-top: 1.5rem;
+	}
+
 	.featured {
-		padding: 0;
+		padding: 0 2rem 4rem;
+		max-width: 800px;
+		margin: 0 auto;
 	}
 
 	.featured img {
 		width: 100%;
 		height: auto;
-		display: block;
-	}
-
-	/* === SLIDER === */
-	.slider {
-		padding: 0;
-		overflow: hidden;
-		margin-top: 3px;
-	}
-
-	.slider-track {
-		display: flex;
-		gap: 3px;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		-webkit-overflow-scrolling: touch;
-		scrollbar-width: none;
-	}
-
-	.slider-track::-webkit-scrollbar {
-		display: none;
-	}
-
-	.slider-item {
-		flex: 0 0 28.5%;
-		scroll-snap-align: start;
-	}
-
-	.slider-item img {
-		width: 100%;
-		height: auto;
-		display: block;
 		object-fit: cover;
 	}
 
-	/* === CONCEPT TEXT === */
 	.konzept {
-		padding: 2.5rem 2.5rem;
-		max-width: 550px;
+		padding: 4rem 2rem;
+		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
 	}
 
 	.konzept-text {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
-		line-height: 1.7;
+		font-size: 0.9rem;
+		line-height: 1.8;
 		color: var(--color-text);
-		margin-top: 1rem;
+		margin-top: 1.5rem;
 	}
 
-	.konzept-text:first-child {
-		margin-top: 0;
+	.gallery {
+		padding: 4rem 2rem;
+		max-width: 1100px;
+		margin: 0 auto;
 	}
 
-	/* === EVENT PHOTO — edge-to-edge === */
-	.event-photo {
-		padding: 0;
+	.gallery h2 {
+		margin-bottom: 2rem;
 	}
 
-	.event-photo img {
+	h2 {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.3rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		text-align: center;
+		margin-bottom: 0.8rem;
+		color: var(--color-text);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2px;
+	}
+
+	.grid-item {
+		overflow: hidden;
+	}
+
+	.grid-item img {
 		width: 100%;
-		height: auto;
+		height: 300px;
+		object-fit: cover;
 		display: block;
 	}
 
-	/* === PORTRAIT + ABOUT === */
-	.portrait-section {
-		padding: 3.5rem 2rem;
-		max-width: 580px;
+	.ueber-uns {
+		padding: 4rem 2rem;
+		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 
-	.portrait-img {
-		width: 46%;
-		max-width: 330px;
-		height: auto;
-		margin-bottom: 1.5rem;
-	}
-
-	.portrait-text {
+	.ueber-uns p {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
-		line-height: 1.7;
+		font-size: 0.9rem;
+		line-height: 1.8;
 		color: var(--color-text);
+		margin-top: 1.5rem;
 	}
 
-	/* === CLOSER — edge-to-edge === */
 	.closer {
-		padding: 0;
+		padding: 4rem 2rem;
+		max-width: 900px;
+		margin: 0 auto;
 	}
 
 	.closer img {
 		width: 100%;
 		height: auto;
-		display: block;
+		object-fit: cover;
 	}
 
-	/* === FOOTER === */
 	footer {
-		padding: 2.5rem 2rem 3rem;
+		padding: 4rem 2rem;
 		text-align: center;
-	}
-
-	.contact-label {
-		font-family: var(--font-body);
-		font-size: 0.82rem;
-		letter-spacing: 0.04em;
-		color: var(--color-text);
-		margin-bottom: 0.1rem;
 	}
 
 	.contact-line {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
+		font-size: 0.9rem;
 		color: var(--color-text);
-		letter-spacing: 0.03em;
+		margin-top: 1rem;
+		letter-spacing: 0.05em;
 	}
 
 	.contact-email {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
-		color: #FF0000;
+		font-size: 0.9rem;
+		color: var(--color-text);
 		margin-top: 0.5rem;
-		letter-spacing: 0.02em;
+		letter-spacing: 0.03em;
 		text-decoration: none;
-		display: block;
 	}
 
-	.footer-trident {
-		width: 16px;
-		height: auto;
-		margin-top: 0.6rem;
+	.footer-spacer {
+		height: 5rem;
 	}
 
-	/* === MOBILE === */
-	@media (max-width: 720px) {
-		main {
-			max-width: 100%;
+	@media (max-width: 768px) {
+		.hero {
+			min-height: 45vh;
+			padding: 5rem 1.5rem 2rem;
+		}
+
+		.tagline {
+			font-size: 0.8rem;
+		}
+
+		.featured {
+			padding: 0 0.5rem 3rem;
+		}
+
+		.konzept {
+			padding: 3rem 1.2rem;
+		}
+
+		.gallery {
+			padding: 3rem 0.5rem;
+		}
+
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.grid-item img {
+			height: 200px;
+		}
+
+		.ueber-uns {
+			padding: 3rem 1.2rem;
+		}
+
+		.closer {
+			padding: 3rem 0.5rem;
+		}
+
+		footer {
+			padding: 3rem 1.2rem;
+		}
+
+		h2 {
+			font-size: 1.1rem;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.hero {
-			padding: 2rem 1rem 1rem;
+			min-height: 40vh;
+			padding: 4.5rem 1rem 1.5rem;
 		}
 
-		.tagline {
-			font-size: 0.65rem;
-		}
-
-		.slider-item {
-			flex: 0 0 38%;
+		.featured {
+			padding: 0 0.25rem 2.5rem;
 		}
 
 		.konzept {
-			padding: 2rem 1rem;
-		}
-
-		.konzept-text {
-			font-size: 0.78rem;
-		}
-
-		.portrait-section {
 			padding: 2.5rem 1rem;
 		}
 
-		.portrait-img {
-			width: 60%;
+		.konzept-text {
+			font-size: 0.82rem;
 		}
 
-		.portrait-text {
-			font-size: 0.78rem;
+		.gallery {
+			padding: 2.5rem 0.25rem;
+		}
+
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.grid-item img {
+			height: 160px;
+		}
+
+		.ueber-uns {
+			padding: 2.5rem 1rem;
+		}
+
+		.ueber-uns p {
+			font-size: 0.82rem;
+		}
+
+		.closer {
+			padding: 2.5rem 0.25rem;
 		}
 
 		footer {
-			padding: 2rem 1rem 2.5rem;
+			padding: 2.5rem 1rem;
+		}
+
+		nav {
+			gap: 1.5rem;
+			font-size: 0.8rem;
+		}
+
+		h2 {
+			font-size: 1rem;
+		}
+
+		.footer-spacer {
+			height: 3rem;
 		}
 	}
 </style>
