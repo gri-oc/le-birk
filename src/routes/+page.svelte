@@ -128,8 +128,9 @@
 
 	/* === SLIDER === */
 	.slider {
-		padding: 3px 0 0 0;
+		padding: 0;
 		overflow: hidden;
+		margin-top: 3px;
 	}
 
 	.slider-track {
@@ -146,7 +147,7 @@
 	}
 
 	.slider-item {
-		flex: 0 0 31%;
+		flex: 0 0 28.5%;
 		scroll-snap-align: start;
 	}
 
@@ -200,10 +201,10 @@
 	}
 
 	.portrait-img {
-		width: 50%;
-		max-width: 320px;
+		width: 46%;
+		max-width: 330px;
 		height: auto;
-		margin-bottom: 2rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.portrait-text {
@@ -256,9 +257,9 @@
 	}
 
 	.footer-trident {
-		width: 20px;
+		width: 16px;
 		height: auto;
-		margin-top: 0.8rem;
+		margin-top: 0.6rem;
 	}
 
 	/* === MOBILE === */
