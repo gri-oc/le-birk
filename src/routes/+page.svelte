@@ -53,9 +53,7 @@
 	</section>
 
 	<section class="portrait-section">
-		<div class="portrait-frame">
-			<img src="{base}/images/portrait.jpg" alt="Joschka Weins and Lukas Rosen" />
-		</div>
+		<img class="portrait-img" src="{base}/images/portrait.jpg" alt="Joschka Weins and Lukas Rosen" />
 		<p class="portrait-text">
 			Joschka Weins and Lukas Rosen — driven by the ambition to
 			take fine dining out of its traditional setting. What started as an
@@ -181,18 +179,11 @@
 		align-items: center;
 	}
 
-	.portrait-frame {
-		width: 280px;
-		height: 280px;
-		border-radius: 50%;
-		overflow: hidden;
-		margin-bottom: 2.5rem;
-	}
-
-	.portrait-frame img {
+	.portrait-img {
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		max-width: 450px;
+		height: auto;
+		margin-bottom: 2.5rem;
 	}
 
 	.portrait-text {
@@ -279,9 +270,8 @@
 			padding: 3.5rem 1.2rem;
 		}
 
-		.portrait-frame {
-			width: 220px;
-			height: 220px;
+		.portrait-img {
+			max-width: 350px;
 		}
 
 		footer {
@@ -323,9 +313,8 @@
 			padding: 3rem 1rem;
 		}
 
-		.portrait-frame {
-			width: 180px;
-			height: 180px;
+		.portrait-img {
+			max-width: 280px;
 		}
 
 		.portrait-text {
