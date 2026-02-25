@@ -147,7 +147,7 @@
 
 	.featured {
 		padding: 0 2rem 4rem;
-		max-width: 800px;
+		max-width: 100%;
 		margin: 0 auto;
 	}
 
@@ -159,7 +159,7 @@
 
 	.konzept {
 		padding: 4rem 2rem;
-		max-width: 650px;
+		max-width: 100%;
 		margin: 0 auto;
 		text-align: center;
 	}
@@ -174,7 +174,7 @@
 
 	.gallery {
 		padding: 4rem 2rem;
-		max-width: 1100px;
+		max-width: 100%;
 		margin: 0 auto;
 	}
 
@@ -212,7 +212,7 @@
 
 	.ueber-uns {
 		padding: 4rem 2rem;
-		max-width: 650px;
+		max-width: 100%;
 		margin: 0 auto;
 		text-align: center;
 	}
@@ -227,7 +227,7 @@
 
 	.closer {
 		padding: 4rem 2rem;
-		max-width: 900px;
+		max-width: 100%;
 		margin: 0 auto;
 	}
 
