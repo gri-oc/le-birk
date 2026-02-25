@@ -59,6 +59,10 @@
 		</div>
 	</section>
 
+	<section class="event-photo">
+		<img src="{base}/images/event.jpg" alt="Birk dinner event" />
+	</section>
+
 	<section class="ueber-uns">
 		<h2>about us</h2>
 		<p>
@@ -207,6 +211,16 @@
 		width: 100%;
 		height: 300px;
 		object-fit: cover;
+		display: block;
+	}
+
+	.event-photo {
+		padding: 0;
+	}
+
+	.event-photo img {
+		width: 100%;
+		height: auto;
 		display: block;
 	}
 
