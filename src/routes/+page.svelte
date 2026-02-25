@@ -17,19 +17,19 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<!-- Hero: grüner Teller -->
+	<!-- Hero: grüner Teller, EDGE-TO-EDGE -->
 	<section class="featured">
 		<img src="{base}/images/hero.jpg" alt="Green dish with cucumber" />
 	</section>
 
-	<!-- 3er Gallery: Hotdogs, Tafel, Koch -->
+	<!-- 3er Gallery, EDGE-TO-EDGE, direkt am Hero -->
 	<section class="gallery">
 		<div class="grid">
 			<div class="grid-item">
 				<img src="{base}/images/gallery-1.jpg" alt="Lobster rolls" loading="lazy" />
 			</div>
 			<div class="grid-item">
-				<img src="{base}/images/gallery-2.jpg" alt="Table spread" loading="lazy" />
+				<img src="{base}/images/gallery-2.jpg" alt="Taco bite on birch wood" loading="lazy" />
 			</div>
 			<div class="grid-item">
 				<img src="{base}/images/gallery-3.jpg" alt="Chef at work" loading="lazy" />
@@ -50,7 +50,7 @@
 		</p>
 	</section>
 
-	<!-- Event Foto: Dinner-Szene panoramic -->
+	<!-- Event Foto: S/W Dinner-Szene, EDGE-TO-EDGE -->
 	<section class="event-photo">
 		<img src="{base}/images/event.jpg" alt="Birk dinner event" />
 	</section>
@@ -66,7 +66,7 @@
 		</p>
 	</section>
 
-	<!-- Closer: Hummer panoramic -->
+	<!-- Closer: Hummer, EDGE-TO-EDGE -->
 	<section class="closer">
 		<img src="{base}/images/closer.jpg" alt="Lobster cooking" />
 	</section>
@@ -76,7 +76,7 @@
 		<p class="contact-label">contact</p>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<a class="contact-email" href="mailto:hello@lebirk.de">hello@lebirk.de</a>
-		<img class="footer-trident" src="{base}/images/logo-web.png" alt="Birk" />
+		<img class="footer-trident" src="{base}/favicon.png" alt="Birk" />
 	</footer>
 </main>
 
@@ -86,34 +86,32 @@
 		overflow-x: hidden;
 	}
 
-	/* === HERO === */
+	/* === HERO (Logo area) === */
 	.hero {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-		padding: 3.5rem 2rem 2.5rem;
+		padding: 2.5rem 2rem 1.5rem;
 	}
 
 	.logo {
-		width: clamp(120px, 20vw, 200px);
+		width: clamp(130px, 22vw, 220px);
 		height: auto;
 	}
 
 	.tagline {
 		font-family: var(--font-body);
 		font-size: 0.8rem;
-		letter-spacing: 0.15em;
+		letter-spacing: 0.12em;
 		color: var(--color-text);
-		margin-top: 1rem;
+		margin-top: 0.5rem;
 	}
 
-	/* === FEATURED (Hero Image) === */
+	/* === FEATURED (Hero Image) — edge-to-edge === */
 	.featured {
-		padding: 0 1.5rem 2px;
-		max-width: 900px;
-		margin: 0 auto;
+		padding: 0;
 	}
 
 	.featured img {
@@ -122,7 +120,7 @@
 		display: block;
 	}
 
-	/* === GALLERY 3er Reihe === */
+	/* === GALLERY 3er Reihe — edge-to-edge, direkt am Hero === */
 	.gallery {
 		padding: 0;
 	}
@@ -130,7 +128,7 @@
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 2px;
+		gap: 3px;
 	}
 
 	.grid-item {
@@ -146,16 +144,16 @@
 
 	/* === CONCEPT TEXT === */
 	.konzept {
-		padding: 3.5rem 2rem;
-		max-width: 580px;
+		padding: 3rem 2rem;
+		max-width: 600px;
 		margin: 0 auto;
 		text-align: center;
 	}
 
 	.konzept-text {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
-		line-height: 1.8;
+		font-size: 0.85rem;
+		line-height: 1.75;
 		color: var(--color-text);
 		margin-top: 1.2rem;
 	}
@@ -164,7 +162,7 @@
 		margin-top: 0;
 	}
 
-	/* === EVENT PHOTO (panoramic) === */
+	/* === EVENT PHOTO — edge-to-edge, S/W === */
 	.event-photo {
 		padding: 0;
 	}
@@ -177,8 +175,8 @@
 
 	/* === PORTRAIT + ABOUT === */
 	.portrait-section {
-		padding: 4.5rem 2rem;
-		max-width: 550px;
+		padding: 3.5rem 2rem;
+		max-width: 600px;
 		margin: 0 auto;
 		text-align: center;
 		display: flex;
@@ -187,20 +185,20 @@
 	}
 
 	.portrait-img {
-		width: 65%;
-		max-width: 350px;
+		width: 55%;
+		max-width: 380px;
 		height: auto;
 		margin-bottom: 2rem;
 	}
 
 	.portrait-text {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
-		line-height: 1.8;
+		font-size: 0.85rem;
+		line-height: 1.75;
 		color: var(--color-text);
 	}
 
-	/* === CLOSER (panoramic) === */
+	/* === CLOSER — edge-to-edge === */
 	.closer {
 		padding: 0;
 	}
@@ -213,49 +211,45 @@
 
 	/* === FOOTER === */
 	footer {
-		padding: 3.5rem 2rem 2rem;
+		padding: 3rem 2rem 2rem;
 		text-align: center;
 	}
 
 	.contact-label {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
-		letter-spacing: 0.08em;
+		font-size: 0.85rem;
+		letter-spacing: 0.06em;
 		color: var(--color-text);
-		margin-bottom: 0.3rem;
+		margin-bottom: 0.2rem;
 	}
 
 	.contact-line {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
+		font-size: 0.85rem;
 		color: var(--color-text);
-		letter-spacing: 0.05em;
+		letter-spacing: 0.04em;
 	}
 
 	.contact-email {
 		font-family: var(--font-body);
-		font-size: 0.82rem;
+		font-size: 0.85rem;
 		color: #FF0000;
-		margin-top: 0.8rem;
+		margin-top: 0.6rem;
 		letter-spacing: 0.03em;
 		text-decoration: none;
 		display: block;
 	}
 
 	.footer-trident {
-		width: 30px;
+		width: 24px;
 		height: auto;
-		margin-top: 2rem;
+		margin-top: 1.2rem;
 	}
 
 	/* === MOBILE === */
 	@media (max-width: 768px) {
 		.hero {
-			padding: 3rem 1.5rem 2rem;
-		}
-
-		.featured {
-			padding: 0 0.5rem 2px;
+			padding: 2rem 1.5rem 1.2rem;
 		}
 
 		.konzept {
@@ -263,11 +257,11 @@
 		}
 
 		.portrait-section {
-			padding: 3rem 1.2rem;
+			padding: 2.5rem 1.2rem;
 		}
 
 		.portrait-img {
-			width: 70%;
+			width: 60%;
 		}
 
 		footer {
@@ -277,15 +271,11 @@
 
 	@media (max-width: 480px) {
 		.hero {
-			padding: 2.5rem 1rem 1.5rem;
+			padding: 2rem 1rem 1rem;
 		}
 
 		.tagline {
 			font-size: 0.7rem;
-		}
-
-		.featured {
-			padding: 0 0.25rem 2px;
 		}
 
 		.konzept {
@@ -297,11 +287,11 @@
 		}
 
 		.portrait-section {
-			padding: 2.5rem 1rem;
+			padding: 2rem 1rem;
 		}
 
 		.portrait-img {
-			width: 75%;
+			width: 70%;
 		}
 
 		.portrait-text {
