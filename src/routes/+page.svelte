@@ -1,5 +1,14 @@
 <script>
 	import { base } from '$app/paths';
+
+	const slides = [
+		{ src: 'slide-1.jpg', alt: 'Lobster rolls' },
+		{ src: 'slide-2.jpg', alt: 'Taco on birch wood' },
+		{ src: 'slide-3.jpg', alt: 'Chef cooking' },
+		{ src: 'slide-4.jpg', alt: 'Plated dish' },
+		{ src: 'slide-5.jpg', alt: 'Dish detail' },
+		{ src: 'slide-6.jpg', alt: 'Croquettes' },
+	];
 </script>
 
 <svelte:head>
@@ -17,23 +26,19 @@
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
-	<!-- Hero: grüner Teller, EDGE-TO-EDGE -->
+	<!-- Hero: grüner Teller, edge-to-edge, schmal -->
 	<section class="featured">
 		<img src="{base}/images/hero.jpg" alt="Green dish with cucumber" />
 	</section>
 
-	<!-- 3er Gallery, EDGE-TO-EDGE, direkt am Hero -->
-	<section class="gallery">
-		<div class="grid">
-			<div class="grid-item">
-				<img src="{base}/images/gallery-1.jpg" alt="Lobster rolls" loading="lazy" />
-			</div>
-			<div class="grid-item">
-				<img src="{base}/images/gallery-2.jpg" alt="Taco bite on birch wood" loading="lazy" />
-			</div>
-			<div class="grid-item">
-				<img src="{base}/images/gallery-3.jpg" alt="Chef at work" loading="lazy" />
-			</div>
+	<!-- Slider: Hochformat-Bilder, 4. angeschnitten -->
+	<section class="slider">
+		<div class="slider-track">
+			{#each slides as slide}
+				<div class="slider-item">
+					<img src="{base}/images/{slide.src}" alt={slide.alt} loading="lazy" />
+				</div>
+			{/each}
 		</div>
 	</section>
 
@@ -50,7 +55,7 @@
 		</p>
 	</section>
 
-	<!-- Event Foto: S/W Dinner-Szene, EDGE-TO-EDGE -->
+	<!-- Event Foto: Raum, S/W, edge-to-edge -->
 	<section class="event-photo">
 		<img src="{base}/images/event.jpg" alt="Birk dinner event" />
 	</section>
@@ -66,7 +71,7 @@
 		</p>
 	</section>
 
-	<!-- Closer: Hummer, EDGE-TO-EDGE -->
+	<!-- Closer: Hummer, edge-to-edge -->
 	<section class="closer">
 		<img src="{base}/images/closer.jpg" alt="Lobster cooking" />
 	</section>
@@ -76,7 +81,7 @@
 		<p class="contact-label">contact</p>
 		<p class="contact-line">Inquiries & Bookings</p>
 		<a class="contact-email" href="mailto:hello@lebirk.de">hello@lebirk.de</a>
-		<img class="footer-trident" src="{base}/favicon.png" alt="Birk" />
+		<img class="footer-trident" src="{base}/images/trident.png" alt="Birk" />
 	</footer>
 </main>
 
@@ -87,7 +92,7 @@
 		overflow-x: hidden;
 	}
 
-	/* === HERO (Logo area) === */
+	/* === HERO (Logo) === */
 	.hero {
 		display: flex;
 		flex-direction: column;
@@ -98,19 +103,19 @@
 	}
 
 	.logo {
-		width: clamp(130px, 22vw, 220px);
+		width: clamp(130px, 22vw, 200px);
 		height: auto;
 	}
 
 	.tagline {
 		font-family: var(--font-body);
-		font-size: 0.8rem;
+		font-size: 0.75rem;
 		letter-spacing: 0.12em;
 		color: var(--color-text);
-		margin-top: 0.5rem;
+		margin-top: 0.4rem;
 	}
 
-	/* === FEATURED (Hero Image) — edge-to-edge === */
+	/* === FEATURED (Hero Teller) — edge-to-edge, schmal === */
 	.featured {
 		padding: 0;
 	}
@@ -121,49 +126,58 @@
 		display: block;
 	}
 
-	/* === GALLERY 3er Reihe — edge-to-edge, direkt am Hero === */
-	.gallery {
-		padding: 0;
-	}
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 3px;
-	}
-
-	.grid-item {
+	/* === SLIDER === */
+	.slider {
+		padding: 3px 0 0 0;
 		overflow: hidden;
 	}
 
-	.grid-item img {
+	.slider-track {
+		display: flex;
+		gap: 3px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+	}
+
+	.slider-track::-webkit-scrollbar {
+		display: none;
+	}
+
+	.slider-item {
+		flex: 0 0 31%;
+		scroll-snap-align: start;
+	}
+
+	.slider-item img {
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		height: auto;
 		display: block;
+		object-fit: cover;
 	}
 
 	/* === CONCEPT TEXT === */
 	.konzept {
-		padding: 3rem 2rem;
-		max-width: 600px;
+		padding: 2.5rem 2.5rem;
+		max-width: 550px;
 		margin: 0 auto;
 		text-align: center;
 	}
 
 	.konzept-text {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
-		line-height: 1.75;
+		font-size: 0.82rem;
+		line-height: 1.7;
 		color: var(--color-text);
-		margin-top: 1.2rem;
+		margin-top: 1rem;
 	}
 
 	.konzept-text:first-child {
 		margin-top: 0;
 	}
 
-	/* === EVENT PHOTO — edge-to-edge, S/W === */
+	/* === EVENT PHOTO — edge-to-edge === */
 	.event-photo {
 		padding: 0;
 	}
@@ -177,7 +191,7 @@
 	/* === PORTRAIT + ABOUT === */
 	.portrait-section {
 		padding: 3.5rem 2rem;
-		max-width: 600px;
+		max-width: 580px;
 		margin: 0 auto;
 		text-align: center;
 		display: flex;
@@ -186,16 +200,16 @@
 	}
 
 	.portrait-img {
-		width: 55%;
-		max-width: 380px;
+		width: 50%;
+		max-width: 320px;
 		height: auto;
 		margin-bottom: 2rem;
 	}
 
 	.portrait-text {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
-		line-height: 1.75;
+		font-size: 0.82rem;
+		line-height: 1.7;
 		color: var(--color-text);
 	}
 
@@ -212,61 +226,45 @@
 
 	/* === FOOTER === */
 	footer {
-		padding: 3rem 2rem 2rem;
+		padding: 2.5rem 2rem 3rem;
 		text-align: center;
 	}
 
 	.contact-label {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
-		letter-spacing: 0.06em;
+		font-size: 0.82rem;
+		letter-spacing: 0.04em;
 		color: var(--color-text);
-		margin-bottom: 0.2rem;
+		margin-bottom: 0.1rem;
 	}
 
 	.contact-line {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
+		font-size: 0.82rem;
 		color: var(--color-text);
-		letter-spacing: 0.04em;
+		letter-spacing: 0.03em;
 	}
 
 	.contact-email {
 		font-family: var(--font-body);
-		font-size: 0.85rem;
+		font-size: 0.82rem;
 		color: #FF0000;
-		margin-top: 0.6rem;
-		letter-spacing: 0.03em;
+		margin-top: 0.5rem;
+		letter-spacing: 0.02em;
 		text-decoration: none;
 		display: block;
 	}
 
 	.footer-trident {
-		width: 24px;
+		width: 20px;
 		height: auto;
-		margin-top: 1.2rem;
+		margin-top: 0.8rem;
 	}
 
 	/* === MOBILE === */
-	@media (max-width: 768px) {
-		.hero {
-			padding: 2rem 1.5rem 1.2rem;
-		}
-
-		.konzept {
-			padding: 2.5rem 1.2rem;
-		}
-
-		.portrait-section {
-			padding: 2.5rem 1.2rem;
-		}
-
-		.portrait-img {
-			width: 60%;
-		}
-
-		footer {
-			padding: 2.5rem 1.2rem 1.5rem;
+	@media (max-width: 720px) {
+		main {
+			max-width: 100%;
 		}
 	}
 
@@ -276,7 +274,11 @@
 		}
 
 		.tagline {
-			font-size: 0.7rem;
+			font-size: 0.65rem;
+		}
+
+		.slider-item {
+			flex: 0 0 38%;
 		}
 
 		.konzept {
@@ -288,11 +290,11 @@
 		}
 
 		.portrait-section {
-			padding: 2rem 1rem;
+			padding: 2.5rem 1rem;
 		}
 
 		.portrait-img {
-			width: 70%;
+			width: 60%;
 		}
 
 		.portrait-text {
@@ -300,7 +302,7 @@
 		}
 
 		footer {
-			padding: 2rem 1rem 1.5rem;
+			padding: 2rem 1rem 2.5rem;
 		}
 	}
 </style>
