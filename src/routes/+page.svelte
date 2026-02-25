@@ -81,7 +81,7 @@
 
 <style>
 	.page {
-		max-width: 720px;
+		max-width: 100%;
 		margin: 0 auto;
 		padding: 0;
 	}
