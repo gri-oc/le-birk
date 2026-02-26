@@ -40,8 +40,7 @@
 
 	<!-- Concept Text -->
 	<section class="text-section">
-		<p>In selected Berlin locations, we transform unique spaces into intimate dining experiences — for small groups, with menus that follow season and mood.</p>
-		<p class="mt">No fixed restaurant, no fixed table. Just great food, great people and evenings to remember.</p>
+		<p>Berlin is our dining room. We transform the city’s quiet corners into temporary restaurants where the menu follows the season and the location changes with the mood. It is fine dining stripped of its formality—moving tables and intimate groups in spaces that exist only for a night.</p>
 	</section>
 
 	<!-- Event Photo -->
@@ -56,7 +55,8 @@
 
 	<!-- About Text -->
 	<section class="text-section about-text">
-		<p>Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out of its traditional setting. What started as an idea among friends is now an event gastronomy that gives Berlin a slightly different taste.</p>
+		<p>Joschka Weins and Lukas Rosen — driven by the ambition to create unique evenings. What started as an idea among friends is now an event gastronomy that gives Berlin a slightly different taste.</p>
+		<p class="mt">“We believe that the best meals happen when high-end culinary standards meet the raw, unpolished energy of the city.”</p>
 	</section>
 
 	<!-- Closer -->
