@@ -40,11 +40,8 @@
 
 	<!-- Concept Text -->
 	<section class="text-section">
-		<p>In selected Berlin locations, we transform unique spaces<br>
-		into intimate dining experiences — for small groups,<br>
-		with menus that follow season and mood.</p>
-		<p class="mt">No fixed restaurant, no fixed table. Just great food,<br>
-		great people and evenings to remember.</p>
+		<p>In selected Berlin locations, we transform unique spaces into intimate dining experiences — for small groups, with menus that follow season and mood.</p>
+		<p class="mt">No fixed restaurant, no fixed table. Just great food, great people and evenings to remember.</p>
 	</section>
 
 	<!-- Event Photo -->
@@ -59,10 +56,7 @@
 
 	<!-- About Text -->
 	<section class="text-section about-text">
-		<p>Joschka Weins and Lukas Rosen — driven by the ambition to<br>
-		take fine dining out of its traditional setting. What started as an<br>
-		idea among friends is now an event gastronomy that gives Berlin<br>
-		a slightly different taste.</p>
+		<p>Joschka Weins and Lukas Rosen — driven by the ambition to take fine dining out of its traditional setting. What started as an idea among friends is now an event gastronomy that gives Berlin a slightly different taste.</p>
 	</section>
 
 	<!-- Closer -->
@@ -142,6 +136,10 @@
 		line-height: 1.7;
 		font-weight: 400;
 	}
+	.text-section p {
+		max-width: 560px;
+		margin: 0 auto;
+	}
 	.text-section .mt {
 		margin-top: 16px;
 	}
@@ -195,13 +193,84 @@
 		opacity: 0.8;
 	}
 
-	/* Mobile */
-	@media (max-width: 720px) {
-		.page {
-			max-width: 100%;
+	/* Tablet */
+	@media (max-width: 1100px) {
+		.logo-section {
+			padding: 40px 0 24px;
+		}
+		.logo {
+			width: 128px;
 		}
 		.slider-item {
-			flex: 0 0 34%;
+			flex: 0 0 36%;
+		}
+		.text-section {
+			padding: 40px 20px;
+			font-size: 12px;
+		}
+		.text-section p {
+			max-width: 500px;
+		}
+		.portrait {
+			width: 54%;
+		}
+		.about-text {
+			padding-top: 20px;
+			padding-bottom: 44px;
+		}
+	}
+
+	/* Mobile */
+	@media (max-width: 720px) {
+		.logo-section {
+			padding: 28px 0 18px;
+		}
+		.logo {
+			width: 110px;
+		}
+		.tagline {
+			font-size: 9px;
+		}
+		.slider-track {
+			gap: 2px;
+		}
+		.slider-item {
+			flex: 0 0 48%;
+		}
+		.text-section {
+			padding: 28px 14px;
+			font-size: 11px;
+			line-height: 1.55;
+		}
+		.text-section p {
+			max-width: 340px;
+		}
+		.text-section .mt {
+			margin-top: 12px;
+		}
+		.portrait-section {
+			padding: 34px 0 0;
+		}
+		.portrait {
+			width: 62%;
+		}
+		.about-text {
+			padding-top: 14px;
+			padding-bottom: 34px;
+		}
+		.footer {
+			padding: 34px 16px 56px;
+		}
+		.footer-label,
+		.footer-sub,
+		.footer-email {
+			font-size: 11px;
+		}
+		.footer-email {
+			margin-bottom: 14px;
+		}
+		.footer-trident {
+			width: 16px;
 		}
 	}
 </style>
