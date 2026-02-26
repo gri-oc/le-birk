@@ -169,7 +169,7 @@
 		width: max-content;
 	}
 	.slider-item {
-		flex: 0 0 23%;
+		flex: 0 0 27.5%;
 		scroll-snap-align: start;
 		aspect-ratio: 3 / 4;
 	}
@@ -284,7 +284,7 @@
 			width: 128px;
 		}
 		.slider-item {
-			flex: 0 0 28%;
+			flex: 0 0 27.5%;
 		}
 		.text-section {
 			padding: 40px 20px;
@@ -320,7 +320,7 @@
 			gap: 2px;
 		}
 		.slider-item {
-			flex: 0 0 34%;
+			flex: 0 0 27.5%;
 		}
 		.event-image img {
 			object-position: center 34%;
