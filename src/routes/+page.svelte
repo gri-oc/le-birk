@@ -46,7 +46,7 @@
 <div class="page">
 	<!-- Logo + Tagline -->
 	<section class="logo-section">
-		<img src="{base}/images/logo-web.png" alt="Le Birk" class="logo" />
+		<img src="{base}/images/logo.svg" alt="Le Birk" class="logo" />
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
@@ -85,7 +85,7 @@
 
 	<!-- Portrait -->
 	<section class="portrait-section">
-		<img src="{base}/images/portrait.jpg" alt="Joschka and Lukas" class="portrait" />
+		<img src="{base}/images/portrait-full.jpg" alt="Joschka and Lukas" class="portrait" />
 	</section>
 
 	<!-- About Text -->
@@ -104,7 +104,7 @@
 		<p class="footer-label">contact</p>
 		<p class="footer-sub">Inquiries & Bookings</p>
 		<a href="mailto:hello@lebirk.de" class="footer-email">hello@lebirk.de</a>
-		<img src="{base}/images/trident.png" alt="" class="footer-trident" />
+		<img src="{base}/images/gabel.svg" alt="" class="footer-trident" />
 	</footer>
 </div>
 
@@ -124,8 +124,6 @@
 	.logo {
 		width: 140px;
 		margin: 0 auto;
-		background: #fff;
-		padding: 6px 10px;
 	}
 	.tagline {
 		font-size: 11px;
@@ -249,8 +247,6 @@
 	.footer-trident {
 		width: 12px;
 		margin: 0 auto;
-		padding: 2px 3px;
-		background: #fff;
 		opacity: 1;
 	}
 
