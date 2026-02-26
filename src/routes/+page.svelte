@@ -1,31 +1,31 @@
 <script>
 	import { base } from '$app/paths';
 
-	let sliderTrack;
+	let sliderEl;
 	let isDragging = false;
 	let startX = 0;
 	let startScrollLeft = 0;
 
 	function onSliderDown(event) {
-		if (!sliderTrack) return;
+		if (!sliderEl) return;
 		isDragging = true;
-		sliderTrack.classList.add('dragging');
-		startX = event.pageX - sliderTrack.offsetLeft;
-		startScrollLeft = sliderTrack.scrollLeft;
+		sliderEl.classList.add('dragging');
+		startX = event.pageX - sliderEl.offsetLeft;
+		startScrollLeft = sliderEl.scrollLeft;
 	}
 
 	function onSliderUp() {
-		if (!sliderTrack) return;
+		if (!sliderEl) return;
 		isDragging = false;
-		sliderTrack.classList.remove('dragging');
+		sliderEl.classList.remove('dragging');
 	}
 
 	function onSliderMove(event) {
-		if (!isDragging || !sliderTrack) return;
+		if (!isDragging || !sliderEl) return;
 		event.preventDefault();
-		const x = event.pageX - sliderTrack.offsetLeft;
+		const x = event.pageX - sliderEl.offsetLeft;
 		const walk = (x - startX) * 1.2;
-		sliderTrack.scrollLeft = startScrollLeft - walk;
+		sliderEl.scrollLeft = startScrollLeft - walk;
 	}
 
 	const slides = [
@@ -56,17 +56,17 @@
 	</section>
 
 	<!-- Slider -->
-	<section class="slider">
-		<div
-			class="slider-track"
-			bind:this={sliderTrack}
-			on:mousedown={onSliderDown}
-			on:mousemove={onSliderMove}
-			on:mouseup={onSliderUp}
-			on:mouseleave={onSliderUp}
-			role="region"
-			aria-label="Food gallery slider"
-		>
+	<section
+		class="slider"
+		bind:this={sliderEl}
+		on:mousedown={onSliderDown}
+		on:mousemove={onSliderMove}
+		on:mouseup={onSliderUp}
+		on:mouseleave={onSliderUp}
+		role="region"
+		aria-label="Food gallery slider"
+	>
+		<div class="slider-track">
 			{#each slides as slide}
 				<div class="slider-item">
 					<img src="{base}/images/{slide.src}" alt={slide.alt} draggable="false" />
@@ -155,18 +155,19 @@
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
 		margin-bottom: 0;
-	}
-	.slider::-webkit-scrollbar { display: none; }
-	.slider-track {
-		display: flex;
-		gap: 4px;
-		scroll-snap-type: x mandatory;
 		cursor: grab;
 		user-select: none;
 		touch-action: pan-y;
 	}
-	.slider-track.dragging {
+	.slider::-webkit-scrollbar { display: none; }
+	.slider.dragging {
 		cursor: grabbing;
+	}
+	.slider-track {
+		display: flex;
+		gap: 4px;
+		scroll-snap-type: x mandatory;
+		width: max-content;
 	}
 	.slider-item {
 		flex: 0 0 27%;
