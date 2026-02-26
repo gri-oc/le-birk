@@ -2,30 +2,13 @@
 	import { base } from '$app/paths';
 
 	let sliderEl;
-	let isDragging = false;
-	let startX = 0;
-	let startScrollLeft = 0;
 
-	function onPointerDown(event) {
+	function scrollSlider(direction) {
 		if (!sliderEl) return;
-		if (event.pointerType !== 'mouse') return;
-		isDragging = true;
-		sliderEl.classList.add('dragging');
-		startX = event.clientX;
-		startScrollLeft = sliderEl.scrollLeft;
-	}
-
-	function onPointerUp() {
-		if (!sliderEl) return;
-		isDragging = false;
-		sliderEl.classList.remove('dragging');
-	}
-
-	function onPointerMove(event) {
-		if (!isDragging || !sliderEl) return;
-		event.preventDefault();
-		const walk = (event.clientX - startX) * 1.15;
-		sliderEl.scrollLeft = startScrollLeft - walk;
+		sliderEl.scrollBy({
+			left: direction * sliderEl.clientWidth * 0.72,
+			behavior: 'smooth'
+		});
 	}
 
 	const slides = [
@@ -56,23 +39,18 @@
 	</section>
 
 	<!-- Slider -->
-	<section
-		class="slider"
-		bind:this={sliderEl}
-		on:pointerdown={onPointerDown}
-		on:pointermove={onPointerMove}
-		on:pointerup={onPointerUp}
-		on:pointercancel={onPointerUp}
-		on:pointerleave={onPointerUp}
-		aria-label="Food gallery slider"
-	>
-		<div class="slider-track">
-			{#each slides as slide}
-				<div class="slider-item">
-					<img src="{base}/images/{slide.src}" alt={slide.alt} draggable="false" />
-				</div>
-			{/each}
+	<section class="slider" aria-label="Food gallery slider">
+		<button class="slider-btn prev" type="button" on:click={() => scrollSlider(-1)} aria-label="Vorherige Bilder">‹</button>
+		<div class="slider-viewport" bind:this={sliderEl}>
+			<div class="slider-track">
+				{#each slides as slide}
+					<div class="slider-item">
+						<img src="{base}/images/{slide.src}" alt={slide.alt} draggable="false" />
+					</div>
+				{/each}
+			</div>
 		</div>
+		<button class="slider-btn next" type="button" on:click={() => scrollSlider(1)} aria-label="Nächste Bilder">›</button>
 	</section>
 
 	<!-- Concept Text -->
@@ -151,32 +129,35 @@
 	/* Slider */
 	.slider {
 		--slider-gap: 4px;
+		--visible-slides: 3.5;
+		position: relative;
 		width: 100%;
+		margin-bottom: 0;
+	}
+
+	.slider-viewport {
 		overflow-x: auto;
+		overflow-y: hidden;
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
-		margin-bottom: 0;
-		cursor: grab;
-		user-select: none;
-		touch-action: pan-x;
-		overflow-y: hidden;
 		overscroll-behavior-x: contain;
+		touch-action: pan-x;
 	}
-	.slider::-webkit-scrollbar { display: none; }
-	.slider.dragging {
-		cursor: grabbing;
-	}
+	.slider-viewport::-webkit-scrollbar { display: none; }
+
 	.slider-track {
 		display: flex;
 		gap: var(--slider-gap);
+		width: auto;
 		scroll-snap-type: x mandatory;
-		width: max-content;
 	}
+
 	.slider-item {
-		flex: 0 0 clamp(96px, 14vw, 160px);
-		scroll-snap-align: start;
+		flex: 0 0 calc((100% - (var(--slider-gap) * 3)) / var(--visible-slides));
 		aspect-ratio: 3 / 4;
+		scroll-snap-align: start;
 	}
+
 	.slider-item img {
 		width: 100%;
 		height: 100%;
@@ -184,6 +165,23 @@
 		display: block;
 		pointer-events: none;
 	}
+
+	.slider-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 2;
+		width: 28px;
+		height: 44px;
+		border: 0;
+		background: rgba(26, 26, 26, 0.35);
+		color: #fff;
+		font-size: 20px;
+		line-height: 1;
+		cursor: pointer;
+	}
+	.slider-btn.prev { left: 0; }
+	.slider-btn.next { right: 0; }
 
 	/* Text sections */
 	.text-section {
@@ -287,8 +285,8 @@
 		.logo {
 			width: 128px;
 		}
-		.slider-item {
-			flex: 0 0 clamp(88px, 16vw, 130px);
+		.slider {
+			--visible-slides: 3.5;
 		}
 		.text-section {
 			padding: 40px 20px;
@@ -322,9 +320,10 @@
 		}
 		.slider {
 			--slider-gap: 2px;
+			--visible-slides: 3.5;
 		}
-		.slider-item {
-			flex: 0 0 clamp(78px, 24vw, 108px);
+		.slider-btn {
+			display: none;
 		}
 		.event-image img {
 			object-position: center 34%;
