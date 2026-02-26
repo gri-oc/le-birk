@@ -88,6 +88,8 @@
 	.logo {
 		width: 140px;
 		margin: 0 auto;
+		background: #fff;
+		padding: 6px 10px;
 	}
 	.tagline {
 		font-size: 11px;
@@ -118,7 +120,7 @@
 		scroll-snap-type: x mandatory;
 	}
 	.slider-item {
-		flex: 0 0 32%;
+		flex: 0 0 27%;
 		scroll-snap-align: start;
 	}
 	.slider-item img {
@@ -188,9 +190,11 @@
 		margin-bottom: 24px;
 	}
 	.footer-trident {
-		width: 24px;
+		width: 12px;
 		margin: 0 auto;
-		opacity: 0.8;
+		padding: 2px 3px;
+		background: #fff;
+		opacity: 1;
 	}
 
 	/* Tablet */
@@ -202,7 +206,7 @@
 			width: 128px;
 		}
 		.slider-item {
-			flex: 0 0 36%;
+			flex: 0 0 32%;
 		}
 		.text-section {
 			padding: 40px 20px;
@@ -235,7 +239,7 @@
 			gap: 2px;
 		}
 		.slider-item {
-			flex: 0 0 48%;
+			flex: 0 0 42%;
 		}
 		.text-section {
 			padding: 28px 14px;
