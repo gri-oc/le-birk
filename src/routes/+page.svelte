@@ -104,6 +104,11 @@
 		width: 100%;
 		margin-bottom: 4px;
 	}
+	.hero img {
+		width: 100%;
+		max-width: none;
+		height: auto;
+	}
 
 	/* Slider */
 	.slider {
