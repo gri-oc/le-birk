@@ -113,7 +113,7 @@
 		max-width: 100%;
 		margin: 0 auto;
 		padding: 0;
-		--banner-height: clamp(180px, 34vw, 320px);
+		--banner-height: clamp(220px, 42vw, 420px);
 	}
 
 	/* Logo */
