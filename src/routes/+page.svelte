@@ -80,7 +80,7 @@
 	</section>
 
 	<!-- Event Photo -->
-	<section class="full-image">
+	<section class="full-image event-image">
 		<img src="{base}/images/event.jpg" alt="Event space" />
 	</section>
 
@@ -210,6 +210,9 @@
 		object-fit: cover;
 		display: block;
 	}
+	.event-image img {
+		object-position: center 38%;
+	}
 
 	/* Portrait */
 	.portrait-section {
@@ -318,6 +321,9 @@
 		}
 		.slider-item {
 			flex: 0 0 34%;
+		}
+		.event-image img {
+			object-position: center 34%;
 		}
 		.text-section {
 			padding: 28px 14px;
