@@ -1,5 +1,33 @@
 <script>
 	import { base } from '$app/paths';
+
+	let sliderTrack;
+	let isDragging = false;
+	let startX = 0;
+	let startScrollLeft = 0;
+
+	function onSliderDown(event) {
+		if (!sliderTrack) return;
+		isDragging = true;
+		sliderTrack.classList.add('dragging');
+		startX = event.pageX - sliderTrack.offsetLeft;
+		startScrollLeft = sliderTrack.scrollLeft;
+	}
+
+	function onSliderUp() {
+		if (!sliderTrack) return;
+		isDragging = false;
+		sliderTrack.classList.remove('dragging');
+	}
+
+	function onSliderMove(event) {
+		if (!isDragging || !sliderTrack) return;
+		event.preventDefault();
+		const x = event.pageX - sliderTrack.offsetLeft;
+		const walk = (x - startX) * 1.2;
+		sliderTrack.scrollLeft = startScrollLeft - walk;
+	}
+
 	const slides = [
 		{ src: 'slide-1.jpg', alt: 'Hotdogs' },
 		{ src: 'slide-2.jpg', alt: 'Taco auf Birke' },
@@ -29,7 +57,14 @@
 
 	<!-- Slider -->
 	<section class="slider">
-		<div class="slider-track">
+		<div
+			class="slider-track"
+			bind:this={sliderTrack}
+			on:mousedown={onSliderDown}
+			on:mousemove={onSliderMove}
+			on:mouseup={onSliderUp}
+			on:mouseleave={onSliderUp}
+		>
 			{#each slides as slide}
 				<div class="slider-item">
 					<img src="{base}/images/{slide.src}" alt={slide.alt} />
@@ -123,6 +158,11 @@
 		display: flex;
 		gap: 4px;
 		scroll-snap-type: x mandatory;
+		cursor: grab;
+		user-select: none;
+	}
+	.slider-track.dragging {
+		cursor: grabbing;
 	}
 	.slider-item {
 		flex: 0 0 27%;
