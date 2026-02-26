@@ -193,7 +193,15 @@
 
 	/* Full width images */
 	.full-image {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw);
+	}
+	.full-image img {
 		width: 100%;
+		max-width: none;
+		height: auto;
+		display: block;
 	}
 
 	/* Portrait */
