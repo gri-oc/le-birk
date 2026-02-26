@@ -64,10 +64,12 @@
 			on:mousemove={onSliderMove}
 			on:mouseup={onSliderUp}
 			on:mouseleave={onSliderUp}
+			role="region"
+			aria-label="Food gallery slider"
 		>
 			{#each slides as slide}
 				<div class="slider-item">
-					<img src="{base}/images/{slide.src}" alt={slide.alt} />
+					<img src="{base}/images/{slide.src}" alt={slide.alt} draggable="false" />
 				</div>
 			{/each}
 		</div>
@@ -161,6 +163,7 @@
 		scroll-snap-type: x mandatory;
 		cursor: grab;
 		user-select: none;
+		touch-action: pan-y;
 	}
 	.slider-track.dragging {
 		cursor: grabbing;
@@ -174,6 +177,7 @@
 		height: 100%;
 		object-fit: cover;
 		display: block;
+		pointer-events: none;
 	}
 
 	/* Text sections */
@@ -250,6 +254,23 @@
 		opacity: 1;
 	}
 
+	/* Desktop +20% Typography */
+	@media (min-width: 1101px) {
+		.tagline {
+			font-size: 13px;
+		}
+		.text-section {
+			font-size: 16px;
+		}
+		.footer-label,
+		.footer-sub {
+			font-size: 16px;
+		}
+		.footer-email {
+			font-size: 17px;
+		}
+	}
+
 	/* Tablet */
 	@media (max-width: 1100px) {
 		.logo-section {
@@ -279,6 +300,9 @@
 
 	/* Mobile */
 	@media (max-width: 720px) {
+		.page {
+			--banner-height: clamp(170px, 34vw, 240px);
+		}
 		.logo-section {
 			padding: 28px 0 18px;
 		}
