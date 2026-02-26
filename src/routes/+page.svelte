@@ -8,6 +8,7 @@
 
 	function onPointerDown(event) {
 		if (!sliderEl) return;
+		if (event.pointerType !== 'mouse') return;
 		isDragging = true;
 		sliderEl.classList.add('dragging');
 		startX = event.clientX;
@@ -157,6 +158,8 @@
 		cursor: grab;
 		user-select: none;
 		touch-action: pan-x;
+		overflow-y: hidden;
+		overscroll-behavior-x: contain;
 	}
 	.slider::-webkit-scrollbar { display: none; }
 	.slider.dragging {
@@ -169,7 +172,7 @@
 		width: max-content;
 	}
 	.slider-item {
-		flex: 0 0 9.2%;
+		flex: 0 0 18%;
 		scroll-snap-align: start;
 		aspect-ratio: 3 / 4;
 	}
@@ -284,7 +287,7 @@
 			width: 128px;
 		}
 		.slider-item {
-			flex: 0 0 9.2%;
+			flex: 0 0 22%;
 		}
 		.text-section {
 			padding: 40px 20px;
@@ -320,7 +323,7 @@
 			gap: 2px;
 		}
 		.slider-item {
-			flex: 0 0 9.2%;
+			flex: 0 0 26%;
 		}
 		.event-image img {
 			object-position: center 34%;
