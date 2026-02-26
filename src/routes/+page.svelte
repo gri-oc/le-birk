@@ -113,6 +113,7 @@
 		max-width: 100%;
 		margin: 0 auto;
 		padding: 0;
+		--banner-height: clamp(180px, 34vw, 320px);
 	}
 
 	/* Logo */
@@ -142,7 +143,9 @@
 	.hero img {
 		width: 100%;
 		max-width: none;
-		height: auto;
+		height: var(--banner-height);
+		object-fit: cover;
+		display: block;
 	}
 
 	/* Slider */
@@ -200,7 +203,8 @@
 	.full-image img {
 		width: 100%;
 		max-width: none;
-		height: auto;
+		height: var(--banner-height);
+		object-fit: cover;
 		display: block;
 	}
 
