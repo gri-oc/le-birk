@@ -141,7 +141,7 @@
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
 		overscroll-behavior-x: contain;
-		touch-action: pan-x;
+		touch-action: auto;
 	}
 	.slider-viewport::-webkit-scrollbar { display: none; }
 
