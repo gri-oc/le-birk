@@ -6,25 +6,24 @@
 	let startX = 0;
 	let startScrollLeft = 0;
 
-	function onSliderDown(event) {
+	function onPointerDown(event) {
 		if (!sliderEl) return;
 		isDragging = true;
 		sliderEl.classList.add('dragging');
-		startX = event.pageX - sliderEl.offsetLeft;
+		startX = event.clientX;
 		startScrollLeft = sliderEl.scrollLeft;
 	}
 
-	function onSliderUp() {
+	function onPointerUp() {
 		if (!sliderEl) return;
 		isDragging = false;
 		sliderEl.classList.remove('dragging');
 	}
 
-	function onSliderMove(event) {
+	function onPointerMove(event) {
 		if (!isDragging || !sliderEl) return;
 		event.preventDefault();
-		const x = event.pageX - sliderEl.offsetLeft;
-		const walk = (x - startX) * 1.2;
+		const walk = (event.clientX - startX) * 1.15;
 		sliderEl.scrollLeft = startScrollLeft - walk;
 	}
 
@@ -59,11 +58,11 @@
 	<section
 		class="slider"
 		bind:this={sliderEl}
-		on:mousedown={onSliderDown}
-		on:mousemove={onSliderMove}
-		on:mouseup={onSliderUp}
-		on:mouseleave={onSliderUp}
-		role="region"
+		on:pointerdown={onPointerDown}
+		on:pointermove={onPointerMove}
+		on:pointerup={onPointerUp}
+		on:pointercancel={onPointerUp}
+		on:pointerleave={onPointerUp}
 		aria-label="Food gallery slider"
 	>
 		<div class="slider-track">
@@ -157,7 +156,7 @@
 		margin-bottom: 0;
 		cursor: grab;
 		user-select: none;
-		touch-action: pan-y;
+		touch-action: pan-x;
 	}
 	.slider::-webkit-scrollbar { display: none; }
 	.slider.dragging {
@@ -170,8 +169,9 @@
 		width: max-content;
 	}
 	.slider-item {
-		flex: 0 0 27%;
+		flex: 0 0 23%;
 		scroll-snap-align: start;
+		aspect-ratio: 3 / 4;
 	}
 	.slider-item img {
 		width: 100%;
@@ -281,7 +281,7 @@
 			width: 128px;
 		}
 		.slider-item {
-			flex: 0 0 32%;
+			flex: 0 0 28%;
 		}
 		.text-section {
 			padding: 40px 20px;
@@ -317,7 +317,7 @@
 			gap: 2px;
 		}
 		.slider-item {
-			flex: 0 0 42%;
+			flex: 0 0 34%;
 		}
 		.text-section {
 			padding: 28px 14px;
