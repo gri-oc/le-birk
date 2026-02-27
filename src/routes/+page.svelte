@@ -126,8 +126,6 @@
 	onMount(() => {
 		if (!sliderEl) return;
 
-		let rafId;
-		let lastTs = 0;
 		const speedPxPerSecond = 5.5;
 		let groupWidth = 0;
 		let sliderReady = false;
@@ -152,43 +150,22 @@
 			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
 		};
 
-		const pause = () => {
-			sliderAutoPaused = true;
-		};
-		const resume = () => {
-			if (!mouseDown) sliderAutoPaused = false;
-		};
-
 		ensureSliderReady();
 
-		sliderEl.addEventListener('mouseenter', pause);
-		sliderEl.addEventListener('mouseleave', resume);
-		sliderEl.addEventListener('touchstart', pause, { passive: true });
-		sliderEl.addEventListener('touchend', resume, { passive: true });
 		sliderEl.addEventListener('scroll', wrapLoop, { passive: true });
 		window.addEventListener('resize', recalcGroupWidth);
 
-		const tick = (ts) => {
-			if (!lastTs) lastTs = ts;
-			const dt = (ts - lastTs) / 1000;
-			lastTs = ts;
-
-			if (!sliderAutoPaused && !mouseDown && sliderEl && ensureSliderReady()) {
-				sliderEl.scrollLeft += speedPxPerSecond * dt;
+		const tick = () => {
+			if (sliderEl && !mouseDown && ensureSliderReady()) {
+				sliderEl.scrollLeft += speedPxPerSecond / 60;
 				wrapLoop();
 			}
-
-			rafId = requestAnimationFrame(tick);
 		};
 
-		rafId = requestAnimationFrame(tick);
+		const intervalId = window.setInterval(tick, 16);
 
 		return () => {
-			cancelAnimationFrame(rafId);
-			sliderEl?.removeEventListener('mouseenter', pause);
-			sliderEl?.removeEventListener('mouseleave', resume);
-			sliderEl?.removeEventListener('touchstart', pause);
-			sliderEl?.removeEventListener('touchend', resume);
+			clearInterval(intervalId);
 			sliderEl?.removeEventListener('scroll', wrapLoop);
 			window.removeEventListener('resize', recalcGroupWidth);
 		};
