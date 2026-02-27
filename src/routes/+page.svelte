@@ -128,7 +128,7 @@
 
 		let rafId;
 		let lastTs = 0;
-		const speedPxPerSecond = 22;
+		const speedPxPerSecond = 5.5;
 		let groupWidth = 0;
 
 		const recalcGroupWidth = () => {
@@ -164,7 +164,7 @@
 			lastTs = ts;
 
 			if (!sliderAutoPaused && !mouseDown && sliderEl) {
-				sliderEl.scrollLeft -= speedPxPerSecond * dt;
+				sliderEl.scrollLeft += speedPxPerSecond * dt;
 				wrapLoop();
 			}
 
