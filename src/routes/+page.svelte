@@ -12,12 +12,13 @@
 	}
 
 	const slides = [
-		{ src: 'slide-1.jpg', alt: 'Hotdogs' },
-		{ src: 'slide-2.jpg', alt: 'Taco auf Birke' },
-		{ src: 'slide-3.jpg', alt: 'Koch' },
-		{ src: 'slide-4.jpg', alt: 'Küche 1' },
-		{ src: 'slide-5.jpg', alt: 'Küche 2' },
-		{ src: 'slide-6.jpg', alt: 'Küche 3' }
+		{ src: 'slide-1.jpg', alt: 'Slider Bild 01' },
+		{ src: 'slide-2.jpg', alt: 'Slider Bild 02' },
+		{ src: 'slide-3.jpg', alt: 'Slider Bild 03' },
+		{ src: 'slide-4.jpg', alt: 'Slider Bild 04' },
+		{ src: 'slide-5.jpg', alt: 'Slider Bild 05' },
+		{ src: 'slide-6.jpg', alt: 'Slider Bild 06' },
+		{ src: 'slide-7.jpg', alt: 'Slider Bild 07' }
 	];
 </script>
 
