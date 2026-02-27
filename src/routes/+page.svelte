@@ -129,6 +129,17 @@
 		let rafId;
 		let lastTs = 0;
 		const speedPxPerSecond = 22;
+		let groupWidth = 0;
+
+		const recalcGroupWidth = () => {
+			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
+		};
+
+		const wrapLoop = () => {
+			if (!sliderEl || !groupWidth) return;
+			if (sliderEl.scrollLeft <= 0) sliderEl.scrollLeft += groupWidth;
+			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
+		};
 
 		const pause = () => {
 			sliderAutoPaused = true;
@@ -137,10 +148,15 @@
 			if (!mouseDown) sliderAutoPaused = false;
 		};
 
+		recalcGroupWidth();
+		sliderEl.scrollLeft = groupWidth;
+
 		sliderEl.addEventListener('mouseenter', pause);
 		sliderEl.addEventListener('mouseleave', resume);
 		sliderEl.addEventListener('touchstart', pause, { passive: true });
 		sliderEl.addEventListener('touchend', resume, { passive: true });
+		sliderEl.addEventListener('scroll', wrapLoop, { passive: true });
+		window.addEventListener('resize', recalcGroupWidth);
 
 		const tick = (ts) => {
 			if (!lastTs) lastTs = ts;
@@ -148,11 +164,8 @@
 			lastTs = ts;
 
 			if (!sliderAutoPaused && !mouseDown && sliderEl) {
-				sliderEl.scrollLeft += speedPxPerSecond * dt;
-				const loopPoint = sliderEl.scrollWidth / 2;
-				if (sliderEl.scrollLeft >= loopPoint) {
-					sliderEl.scrollLeft -= loopPoint;
-				}
+				sliderEl.scrollLeft -= speedPxPerSecond * dt;
+				wrapLoop();
 			}
 
 			rafId = requestAnimationFrame(tick);
@@ -166,6 +179,8 @@
 			sliderEl?.removeEventListener('mouseleave', resume);
 			sliderEl?.removeEventListener('touchstart', pause);
 			sliderEl?.removeEventListener('touchend', resume);
+			sliderEl?.removeEventListener('scroll', wrapLoop);
+			window.removeEventListener('resize', recalcGroupWidth);
 		};
 	});
 
@@ -177,7 +192,7 @@
 		{ src: 'slide-5.jpg', alt: 'Slider Bild 05' },
 		{ src: 'slide-6.jpg', alt: 'Slider Bild 06' }
 	];
-	const loopSlides = [...slides, ...slides];
+	const loopSlides = [...slides, ...slides, ...slides];
 </script>
 
 <svelte:head>
