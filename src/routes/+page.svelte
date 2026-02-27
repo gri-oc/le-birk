@@ -468,7 +468,7 @@
 			width: 110px;
 		}
 		.logo-on-hero {
-			width: 108px;
+			width: 92px;
 		}
 		.slider {
 			--slider-gap: 2px;
