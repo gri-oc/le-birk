@@ -238,14 +238,12 @@
 		margin-bottom: 0;
 		position: relative;
 	}
-	.hero img {
+	.hero-image {
 		width: 100%;
 		max-width: none;
 		height: var(--banner-height);
 		object-fit: cover;
 		display: block;
-	}
-	.hero-image {
 		object-position: center 32%;
 	}
 	.logo-on-hero {
@@ -255,6 +253,8 @@
 		transform: translate(-50%, -50%);
 		z-index: 3;
 		filter: brightness(0);
+		width: 140px;
+		height: auto;
 	}
 
 	/* Slider */
