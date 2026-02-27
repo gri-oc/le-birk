@@ -143,8 +143,8 @@
 		window.setTimeout(initLoopPosition, 250);
 
 		const intervalId = window.setInterval(() => {
-			if (!sliderEl || mouseDown) return;
-			sliderEl.scrollLeft += stepPx;
+			if (!sliderEl) return;
+			sliderEl.scrollLeft -= stepPx;
 			wrapLoop();
 		}, 16);
 
@@ -197,6 +197,8 @@
 			on:mousemove={onSliderMouseMove}
 			on:mouseup={onSliderMouseUp}
 			on:mouseleave={onSliderMouseUp}
+			on:touchstart={onSliderMouseUp}
+			on:touchend={onSliderMouseUp}
 		>
 			<div class="slider-track">
 				{#each loopSlides as slide}
