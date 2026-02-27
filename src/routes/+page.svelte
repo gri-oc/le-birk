@@ -19,8 +19,8 @@
 		let rafId;
 		let x = Math.random() * (window.innerWidth - 40);
 		let y = Math.random() * (window.innerHeight - 40);
-		let vx = (Math.random() * 2 + 1.2) * (Math.random() > 0.5 ? 1 : -1);
-		let vy = (Math.random() * 2 + 1.2) * (Math.random() > 0.5 ? 1 : -1);
+		let vx = (Math.random() * 1.2 + 0.8) * (Math.random() > 0.5 ? 1 : -1);
+		let vy = (Math.random() * 1.2 + 0.8) * (Math.random() > 0.5 ? 1 : -1);
 		let angle = Math.random() * 360;
 		let va = (Math.random() - 0.5) * 2.2;
 
