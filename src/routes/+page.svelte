@@ -466,6 +466,9 @@
 		.logo {
 			width: 110px;
 		}
+		.logo-on-hero {
+			width: 108px;
+		}
 		.slider {
 			--slider-gap: 2px;
 			--visible-slides: 3.5;
