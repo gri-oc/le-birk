@@ -461,6 +461,9 @@
 			padding-top: 20px;
 			padding-bottom: 44px;
 		}
+		.footer-trident {
+			width: 26px;
+		}
 		.floating-fork {
 			width: 22px;
 		}
