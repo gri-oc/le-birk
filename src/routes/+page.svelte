@@ -418,10 +418,10 @@
 			width: 40%;
 		}
 		.footer-trident {
-			width: 20px;
+			width: 24px;
 		}
 		.floating-fork {
-			width: 20px;
+			width: 24px;
 		}
 	}
 
@@ -448,10 +448,10 @@
 			padding-bottom: 44px;
 		}
 		.footer-trident {
-			width: 26px;
+			width: 28px;
 		}
 		.floating-fork {
-			width: 22px;
+			width: 28px;
 		}
 	}
 
