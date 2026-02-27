@@ -48,6 +48,32 @@
 		let angle = Math.random() * 360;
 		let va = (Math.random() - 0.5) * 2.2;
 
+		const kickFork = (px, py, strength = 6) => {
+			const w = forkEl.offsetWidth || 16;
+			const h = forkEl.offsetHeight || 24;
+			const cx = x + w / 2;
+			const cy = y + h / 2;
+			const dx = cx - px;
+			const dy = cy - py;
+			const dist = Math.hypot(dx, dy);
+			if (dist > 110) return;
+			const nx = dist ? dx / dist : (Math.random() > 0.5 ? 1 : -1);
+			const ny = dist ? dy / dist : (Math.random() > 0.5 ? 1 : -1);
+			vx += nx * strength;
+			vy += ny * strength;
+			va += (Math.random() - 0.5) * 6;
+		};
+
+		const onPointerMove = (event) => {
+			kickFork(event.clientX, event.clientY, 0.45);
+		};
+		const onPointerDown = (event) => {
+			kickFork(event.clientX, event.clientY, 8);
+		};
+
+		window.addEventListener('pointermove', onPointerMove, { passive: true });
+		window.addEventListener('pointerdown', onPointerDown, { passive: true });
+
 		const tick = () => {
 			const w = forkEl.offsetWidth || 16;
 			const h = forkEl.offsetHeight || 24;
@@ -55,6 +81,10 @@
 			x += vx;
 			y += vy;
 			angle += va;
+
+			vx *= 0.995;
+			vy *= 0.995;
+			va *= 0.99;
 
 			if (x <= 0) {
 				x = 0;
@@ -82,7 +112,12 @@
 		};
 
 		rafId = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(rafId);
+
+		return () => {
+			cancelAnimationFrame(rafId);
+			window.removeEventListener('pointermove', onPointerMove);
+			window.removeEventListener('pointerdown', onPointerDown);
+		};
 	});
 
 	const slides = [
