@@ -122,7 +122,7 @@
 		if (!sliderEl) return;
 
 		let groupWidth = 0;
-		const stepPx = 0.35;
+		const getStepPx = () => (window.innerWidth <= 720 ? 0.2 : 0.35);
 
 		const recalcGroupWidth = () => {
 			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
@@ -144,7 +144,7 @@
 
 		const intervalId = window.setInterval(() => {
 			if (!sliderEl) return;
-			sliderEl.scrollLeft -= stepPx;
+			sliderEl.scrollLeft -= getStepPx();
 			wrapLoop();
 		}, 16);
 
