@@ -91,7 +91,7 @@
 		if (!sliderEl) return;
 
 		let groupWidth = 0;
-		const getStepPx = () => (window.innerWidth <= 720 ? 0.1 : 0.35);
+		const getStepPx = () => (window.innerWidth <= 720 ? 0.05 : 0.35);
 
 		const recalcGroupWidth = () => {
 			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
@@ -268,13 +268,11 @@
 	}
 
 	.slider-viewport {
-		overflow-x: auto;
-		overflow-y: hidden;
-		-webkit-overflow-scrolling: touch;
+		overflow: hidden;
 		scrollbar-width: none;
-		overscroll-behavior-x: contain;
 		touch-action: none;
 		pointer-events: none;
+		user-select: none;
 	}
 	.slider-viewport::-webkit-scrollbar { display: none; }
 
@@ -282,13 +280,11 @@
 		display: flex;
 		gap: var(--slider-gap);
 		width: auto;
-		scroll-snap-type: x mandatory;
 	}
 
 	.slider-item {
 		flex: 0 0 calc((100% - (var(--slider-gap) * 3)) / var(--visible-slides));
 		aspect-ratio: 3 / 4;
-		scroll-snap-align: start;
 	}
 
 	.slider-item img {
