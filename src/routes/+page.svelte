@@ -7,6 +7,7 @@
 	let mouseDown = false;
 	let mouseStartX = 0;
 	let mouseStartScroll = 0;
+	let sliderAutoPaused = false;
 
 	function scrollSlider(direction) {
 		if (!sliderEl) return;
@@ -19,6 +20,7 @@
 	function onSliderMouseDown(event) {
 		if (!sliderEl) return;
 		mouseDown = true;
+		sliderAutoPaused = true;
 		sliderEl.classList.add('dragging');
 		mouseStartX = event.clientX;
 		mouseStartScroll = sliderEl.scrollLeft;
@@ -34,6 +36,7 @@
 	function onSliderMouseUp() {
 		if (!sliderEl) return;
 		mouseDown = false;
+		sliderAutoPaused = false;
 		sliderEl.classList.remove('dragging');
 	}
 
@@ -120,6 +123,52 @@
 		};
 	});
 
+	onMount(() => {
+		if (!sliderEl) return;
+
+		let rafId;
+		let lastTs = 0;
+		const speedPxPerSecond = 22;
+
+		const pause = () => {
+			sliderAutoPaused = true;
+		};
+		const resume = () => {
+			if (!mouseDown) sliderAutoPaused = false;
+		};
+
+		sliderEl.addEventListener('mouseenter', pause);
+		sliderEl.addEventListener('mouseleave', resume);
+		sliderEl.addEventListener('touchstart', pause, { passive: true });
+		sliderEl.addEventListener('touchend', resume, { passive: true });
+
+		const tick = (ts) => {
+			if (!lastTs) lastTs = ts;
+			const dt = (ts - lastTs) / 1000;
+			lastTs = ts;
+
+			if (!sliderAutoPaused && !mouseDown && sliderEl) {
+				sliderEl.scrollLeft += speedPxPerSecond * dt;
+				const loopPoint = sliderEl.scrollWidth / 2;
+				if (sliderEl.scrollLeft >= loopPoint) {
+					sliderEl.scrollLeft -= loopPoint;
+				}
+			}
+
+			rafId = requestAnimationFrame(tick);
+		};
+
+		rafId = requestAnimationFrame(tick);
+
+		return () => {
+			cancelAnimationFrame(rafId);
+			sliderEl?.removeEventListener('mouseenter', pause);
+			sliderEl?.removeEventListener('mouseleave', resume);
+			sliderEl?.removeEventListener('touchstart', pause);
+			sliderEl?.removeEventListener('touchend', resume);
+		};
+	});
+
 	const slides = [
 		{ src: 'slide-1.jpg', alt: 'Slider Bild 01' },
 		{ src: 'slide-2.jpg', alt: 'Slider Bild 02' },
@@ -128,6 +177,7 @@
 		{ src: 'slide-5.jpg', alt: 'Slider Bild 05' },
 		{ src: 'slide-6.jpg', alt: 'Slider Bild 06' }
 	];
+	const loopSlides = [...slides, ...slides];
 </script>
 
 <svelte:head>
@@ -162,7 +212,7 @@
 			on:mouseleave={onSliderMouseUp}
 		>
 			<div class="slider-track">
-				{#each slides as slide}
+				{#each loopSlides as slide}
 					<div class="slider-item">
 						<img src="{base}/images/{slide.src}" alt={slide.alt} draggable="false" />
 					</div>
