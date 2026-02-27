@@ -146,7 +146,7 @@
 <div class="page">
 	<!-- Hero -->
 	<section class="hero">
-		<img src="{base}/images/closer.jpg" alt="Le Birk banner" class="hero-image" />
+		<img src="{base}/images/closer.jpg?v=3" alt="Le Birk banner" class="hero-image" />
 		<img src="{base}/images/logotest.png" alt="Le Birk" class="logo logo-on-hero" />
 	</section>
 
