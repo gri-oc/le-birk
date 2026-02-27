@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 
+	let sliderEl;
 	let forkEl;
 	onMount(() => {
 		if (!forkEl) return;
@@ -86,6 +87,43 @@
 		};
 	});
 
+	onMount(() => {
+		if (!sliderEl) return;
+
+		let groupWidth = 0;
+		const getStepPx = () => (window.innerWidth <= 720 ? 0.05 : 0.35);
+
+		const recalcGroupWidth = () => {
+			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
+		};
+
+		const initLoopPosition = () => {
+			recalcGroupWidth();
+			if (groupWidth > 0) sliderEl.scrollLeft = groupWidth;
+		};
+
+		const wrapLoop = () => {
+			if (!sliderEl || !groupWidth) return;
+			if (sliderEl.scrollLeft <= 0) sliderEl.scrollLeft += groupWidth;
+			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
+		};
+
+		initLoopPosition();
+		window.setTimeout(initLoopPosition, 250);
+
+		const intervalId = window.setInterval(() => {
+			if (!sliderEl) return;
+			sliderEl.scrollLeft -= getStepPx();
+			wrapLoop();
+		}, 16);
+
+		window.addEventListener('resize', initLoopPosition);
+
+		return () => {
+			clearInterval(intervalId);
+			window.removeEventListener('resize', initLoopPosition);
+		};
+	});
 
 	const slides = [
 		{ src: 'slide-1.jpg', alt: 'Slider Bild 01' },
@@ -122,6 +160,7 @@
 	<section class="slider" aria-label="Food gallery slider">
 		<div
 			class="slider-viewport"
+			bind:this={sliderEl}
 		>
 			<div class="slider-track">
 				{#each loopSlides as slide}
@@ -240,10 +279,7 @@
 	.slider-track {
 		display: flex;
 		gap: var(--slider-gap);
-		width: max-content;
-		will-change: transform;
-		transform: translate3d(0, 0, 0);
-		animation: slider-loop 70s linear infinite;
+		width: auto;
 	}
 
 	.slider-item {
@@ -336,12 +372,6 @@
 		opacity: 1;
 	}
 
-
-	@keyframes slider-loop {
-		from { transform: translate3d(0, 0, 0); }
-		to { transform: translate3d(-33.3333%, 0, 0); }
-	}
-
 	/* Desktop +20% Typography */
 	@media (min-width: 1101px) {
 		.page {
@@ -419,9 +449,6 @@
 		.slider {
 			--slider-gap: 2px;
 			--visible-slides: 3.5;
-		}
-		.slider-track {
-			animation-duration: 140s;
 		}
 		.event-image img {
 			object-position: center 34%;
