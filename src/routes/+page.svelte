@@ -146,7 +146,7 @@
 <div class="page">
 	<!-- Logo + Tagline -->
 	<section class="logo-section">
-		<img src="{base}/images/logotest.png" alt="Le Birk" class="logo" />
+		<img src="{base}/images/logo.svg" alt="Le Birk" class="logo" />
 		<p class="tagline">Private Dining Events · Berlin</p>
 	</section>
 
