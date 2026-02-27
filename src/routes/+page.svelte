@@ -17,8 +17,7 @@
 		{ src: 'slide-3.jpg', alt: 'Slider Bild 03' },
 		{ src: 'slide-4.jpg', alt: 'Slider Bild 04' },
 		{ src: 'slide-5.jpg', alt: 'Slider Bild 05' },
-		{ src: 'slide-6.jpg', alt: 'Slider Bild 06' },
-		{ src: 'slide-7.jpg', alt: 'Slider Bild 07' }
+		{ src: 'slide-6.jpg', alt: 'Slider Bild 06' }
 	];
 </script>
 
