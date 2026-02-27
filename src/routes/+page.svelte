@@ -252,7 +252,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 3;
-		filter: brightness(0);
+		filter: none;
 		width: 140px;
 		height: auto;
 	}
