@@ -174,8 +174,7 @@
 
 	<!-- Concept Text -->
 	<section class="text-section">
-		<p>Private Dining Events · Berlin</p>
-		<p class="mt mt-lg">Berlin is our dining room. We transform the city’s quiet corners into temporary restaurants where the menu follows the season and the location changes with the mood. It is fine dining stripped of its formality—moving tables and intimate groups in spaces that exist only for a night.</p>
+		<p class="mt-lg">Berlin is our dining room. We transform the city’s quiet corners into temporary restaurants where the menu follows the season and the location changes with the mood. It is fine dining stripped of its formality—moving tables and intimate groups in spaces that exist only for a night.</p>
 	</section>
 
 	<!-- Event Photo -->
@@ -203,6 +202,7 @@
 	<footer class="footer">
 		<p class="footer-label">contact</p>
 		<p class="footer-sub">Inquiries & Bookings</p>
+		<p class="footer-sub">BIRK · Private Dining Events · Berlin</p>
 		<a href="mailto:hello@lebirk.de" class="footer-email">hello@lebirk.de</a>
 		<img src="{base}/images/gabel.svg" alt="" class="footer-trident" />
 	</footer>
