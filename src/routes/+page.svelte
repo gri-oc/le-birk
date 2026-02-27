@@ -223,7 +223,9 @@
 	</section>
 
 	<!-- Concept Text -->
-	<section class="text-section"></section>
+	<section class="text-section">
+		<p>Private Dining Events · Berlin</p>
+	</section>
 
 	<!-- Event Photo -->
 	<section class="full-image event-image">
