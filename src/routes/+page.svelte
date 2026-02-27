@@ -2,7 +2,7 @@
 	import { base } from '$app/paths';
 	import { onMount } from 'svelte';
 
-	let sliderTrackEl;
+	let sliderEl;
 	let forkEl;
 	onMount(() => {
 		if (!forkEl) return;
@@ -88,47 +88,40 @@
 	});
 
 	onMount(() => {
-		if (!sliderTrackEl) return;
+		if (!sliderEl) return;
 
-		let rafId;
-		let lastTs = 0;
-		let offsetX = 0;
 		let groupWidth = 0;
+		const getStepPx = () => (window.innerWidth <= 720 ? 0.05 : 0.35);
 
-		const isMobile = () => window.innerWidth <= 720;
-		const getSpeed = () => (isMobile() ? 3.1 : 21.9);
-
-		const measureGroupWidth = () => {
-			const items = sliderTrackEl.querySelectorAll('.slider-item');
-			if (items.length < 7) return;
-			groupWidth = items[6].offsetLeft - items[0].offsetLeft;
-			if (groupWidth > 0) {
-				offsetX = ((offsetX % groupWidth) + groupWidth) % groupWidth;
-				offsetX = -offsetX;
-			}
+		const recalcGroupWidth = () => {
+			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
 		};
 
-		const tick = (ts) => {
-			if (!lastTs) lastTs = ts;
-			const dt = (ts - lastTs) / 1000;
-			lastTs = ts;
-
-			offsetX -= getSpeed() * dt;
-			if (groupWidth > 0 && -offsetX >= groupWidth) {
-				offsetX += groupWidth;
-			}
-			sliderTrackEl.style.transform = `translate3d(${offsetX}px, 0, 0)`;
-			rafId = requestAnimationFrame(tick);
+		const initLoopPosition = () => {
+			recalcGroupWidth();
+			if (groupWidth > 0) sliderEl.scrollLeft = groupWidth;
 		};
 
-		measureGroupWidth();
-		window.setTimeout(measureGroupWidth, 200);
-		window.addEventListener('resize', measureGroupWidth);
-		rafId = requestAnimationFrame(tick);
+		const wrapLoop = () => {
+			if (!sliderEl || !groupWidth) return;
+			if (sliderEl.scrollLeft <= 0) sliderEl.scrollLeft += groupWidth;
+			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
+		};
+
+		initLoopPosition();
+		window.setTimeout(initLoopPosition, 250);
+
+		const intervalId = window.setInterval(() => {
+			if (!sliderEl) return;
+			sliderEl.scrollLeft -= getStepPx();
+			wrapLoop();
+		}, 16);
+
+		window.addEventListener('resize', initLoopPosition);
 
 		return () => {
-			cancelAnimationFrame(rafId);
-			window.removeEventListener('resize', measureGroupWidth);
+			clearInterval(intervalId);
+			window.removeEventListener('resize', initLoopPosition);
 		};
 	});
 
@@ -167,8 +160,9 @@
 	<section class="slider" aria-label="Food gallery slider">
 		<div
 			class="slider-viewport"
+			bind:this={sliderEl}
 		>
-			<div class="slider-track" bind:this={sliderTrackEl}>
+			<div class="slider-track">
 				{#each loopSlides as slide}
 					<div class="slider-item">
 						<img src="{base}/images/{slide.src}" alt={slide.alt} draggable="false" />
@@ -285,9 +279,7 @@
 	.slider-track {
 		display: flex;
 		gap: var(--slider-gap);
-		width: max-content;
-		will-change: transform;
-		transform: translate3d(0, 0, 0);
+		width: auto;
 	}
 
 	.slider-item {
