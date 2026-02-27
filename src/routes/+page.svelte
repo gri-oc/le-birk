@@ -130,9 +130,20 @@
 		let lastTs = 0;
 		const speedPxPerSecond = 5.5;
 		let groupWidth = 0;
+		let sliderReady = false;
 
 		const recalcGroupWidth = () => {
 			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
+		};
+
+		const ensureSliderReady = () => {
+			recalcGroupWidth();
+			if (!sliderEl || !groupWidth || sliderEl.scrollWidth <= sliderEl.clientWidth) return false;
+			if (!sliderReady) {
+				sliderEl.scrollLeft = groupWidth;
+				sliderReady = true;
+			}
+			return true;
 		};
 
 		const wrapLoop = () => {
@@ -148,8 +159,7 @@
 			if (!mouseDown) sliderAutoPaused = false;
 		};
 
-		recalcGroupWidth();
-		sliderEl.scrollLeft = groupWidth;
+		ensureSliderReady();
 
 		sliderEl.addEventListener('mouseenter', pause);
 		sliderEl.addEventListener('mouseleave', resume);
@@ -163,7 +173,7 @@
 			const dt = (ts - lastTs) / 1000;
 			lastTs = ts;
 
-			if (!sliderAutoPaused && !mouseDown && sliderEl) {
+			if (!sliderAutoPaused && !mouseDown && sliderEl && ensureSliderReady()) {
 				sliderEl.scrollLeft += speedPxPerSecond * dt;
 				wrapLoop();
 			}
