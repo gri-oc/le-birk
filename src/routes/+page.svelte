@@ -426,7 +426,11 @@
 			padding-top: 20px;
 			padding-bottom: 44px;
 		}
+		.floating-fork {
+			width: 22px;
+		}
 	}
+
 
 	/* Mobile */
 	@media (max-width: 720px) {
