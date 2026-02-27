@@ -36,7 +36,7 @@
 
 	<!-- Hero -->
 	<section class="hero">
-		<img src="{base}/images/hero.jpg" alt="Le Birk dish" />
+		<img src="{base}/images/hero.jpg" alt="Le Birk dish" class="hero-image" />
 	</section>
 
 	<!-- Slider -->
@@ -125,6 +125,9 @@
 		height: var(--banner-height);
 		object-fit: cover;
 		display: block;
+	}
+	.hero-image {
+		object-position: center 32%;
 	}
 
 	/* Slider */
@@ -266,6 +269,9 @@
 		.page {
 			--banner-height: clamp(350px, 64vw, 650px);
 		}
+		.hero-image {
+			object-position: center 28%;
+		}
 		.tagline {
 			font-size: 16px;
 			margin-top: 14px;
@@ -319,6 +325,9 @@
 	@media (max-width: 720px) {
 		.page {
 			--banner-height: clamp(170px, 34vw, 240px);
+		}
+		.hero-image {
+			object-position: center 36%;
 		}
 		.logo-section {
 			padding: 28px 0 18px;
