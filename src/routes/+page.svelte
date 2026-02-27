@@ -7,7 +7,6 @@
 	let mouseDown = false;
 	let mouseStartX = 0;
 	let mouseStartScroll = 0;
-	let sliderAutoPaused = false;
 
 	function scrollSlider(direction) {
 		if (!sliderEl) return;
@@ -20,8 +19,6 @@
 	function onSliderMouseDown(event) {
 		if (!sliderEl) return;
 		mouseDown = true;
-		sliderAutoPaused = true;
-		sliderEl.classList.add('dragging');
 		mouseStartX = event.clientX;
 		mouseStartScroll = sliderEl.scrollLeft;
 	}
@@ -36,8 +33,6 @@
 	function onSliderMouseUp() {
 		if (!sliderEl) return;
 		mouseDown = false;
-		sliderAutoPaused = false;
-		sliderEl.classList.remove('dragging');
 	}
 
 	onMount(() => {
@@ -126,22 +121,16 @@
 	onMount(() => {
 		if (!sliderEl) return;
 
-		const speedPxPerSecond = 5.5;
 		let groupWidth = 0;
-		let sliderReady = false;
+		const stepPx = 0.35;
 
 		const recalcGroupWidth = () => {
 			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
 		};
 
-		const ensureSliderReady = () => {
+		const initLoopPosition = () => {
 			recalcGroupWidth();
-			if (!sliderEl || !groupWidth || sliderEl.scrollWidth <= sliderEl.clientWidth) return false;
-			if (!sliderReady) {
-				sliderEl.scrollLeft = groupWidth;
-				sliderReady = true;
-			}
-			return true;
+			if (groupWidth > 0) sliderEl.scrollLeft = groupWidth;
 		};
 
 		const wrapLoop = () => {
@@ -150,24 +139,20 @@
 			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
 		};
 
-		ensureSliderReady();
+		initLoopPosition();
+		window.setTimeout(initLoopPosition, 250);
 
-		sliderEl.addEventListener('scroll', wrapLoop, { passive: true });
-		window.addEventListener('resize', recalcGroupWidth);
+		const intervalId = window.setInterval(() => {
+			if (!sliderEl || mouseDown) return;
+			sliderEl.scrollLeft += stepPx;
+			wrapLoop();
+		}, 16);
 
-		const tick = () => {
-			if (sliderEl && !mouseDown && ensureSliderReady()) {
-				sliderEl.scrollLeft += speedPxPerSecond / 60;
-				wrapLoop();
-			}
-		};
-
-		const intervalId = window.setInterval(tick, 16);
+		window.addEventListener('resize', initLoopPosition);
 
 		return () => {
 			clearInterval(intervalId);
-			sliderEl?.removeEventListener('scroll', wrapLoop);
-			window.removeEventListener('resize', recalcGroupWidth);
+			window.removeEventListener('resize', initLoopPosition);
 		};
 	});
 
@@ -328,9 +313,6 @@
 		touch-action: auto;
 	}
 	.slider-viewport::-webkit-scrollbar { display: none; }
-	.slider-viewport.dragging {
-		cursor: grabbing;
-	}
 
 	.slider-track {
 		display: flex;
@@ -384,9 +366,6 @@
 	}
 	.text-section .mt {
 		margin-top: 16px;
-	}
-	.text-section .mt-lg {
-		margin-top: 28px;
 	}
 
 	/* Full width images */
