@@ -116,7 +116,7 @@
 	/* Hero */
 	.hero {
 		width: 100%;
-		margin-bottom: 4px;
+		margin-bottom: 0;
 	}
 	.hero img {
 		width: 100%;
