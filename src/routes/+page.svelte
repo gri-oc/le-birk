@@ -174,7 +174,8 @@
 
 	<!-- Concept Text -->
 	<section class="text-section">
-		<p>Berlin is our dining room. We transform the city’s quiet corners into temporary restaurants where the menu follows the season and the location changes with the mood. It is fine dining stripped of its formality—moving tables and intimate groups in spaces that exist only for a night.</p>
+		<p>Private Dining Events · Berlin</p>
+		<p class="mt">Berlin is our dining room. We transform the city’s quiet corners into temporary restaurants where the menu follows the season and the location changes with the mood. It is fine dining stripped of its formality—moving tables and intimate groups in spaces that exist only for a night.</p>
 	</section>
 
 	<!-- Event Photo -->
