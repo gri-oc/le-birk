@@ -106,10 +106,10 @@
 		margin: 0 auto;
 	}
 	.tagline {
-		font-size: 11px;
+		font-size: 13px;
 		font-weight: 400;
 		letter-spacing: 0.5px;
-		margin-top: 4px;
+		margin-top: 10px;
 		color: var(--color-text);
 	}
 
@@ -213,7 +213,7 @@
 		display: block;
 	}
 	.event-image img {
-		object-position: center 38%;
+		object-position: center 30%;
 	}
 
 	/* Portrait */
@@ -223,7 +223,7 @@
 		padding: 56px 0 0;
 	}
 	.portrait {
-		width: 46%;
+		width: 44%;
 	}
 
 	.about-text {
@@ -262,8 +262,12 @@
 
 	/* Desktop +20% Typography */
 	@media (min-width: 1101px) {
+		.page {
+			--banner-height: clamp(350px, 64vw, 650px);
+		}
 		.tagline {
-			font-size: 13px;
+			font-size: 16px;
+			margin-top: 14px;
 		}
 		.text-section {
 			font-size: 16px;
@@ -274,6 +278,12 @@
 		}
 		.footer-email {
 			font-size: 17px;
+		}
+		.portrait {
+			width: 40%;
+		}
+		.footer-trident {
+			width: 20px;
 		}
 	}
 
@@ -316,7 +326,8 @@
 			width: 110px;
 		}
 		.tagline {
-			font-size: 9px;
+			font-size: 12px;
+			margin-top: 10px;
 		}
 		.slider {
 			--slider-gap: 2px;
@@ -330,8 +341,8 @@
 		}
 		.text-section {
 			padding: 28px 14px;
-			font-size: 11px;
-			line-height: 1.55;
+			font-size: 12px;
+			line-height: 1.6;
 		}
 		.text-section p {
 			max-width: 340px;
@@ -343,7 +354,7 @@
 			padding: 34px 0 0;
 		}
 		.portrait {
-			width: 62%;
+			width: 68%;
 		}
 		.about-text {
 			padding-top: 14px;
@@ -355,13 +366,13 @@
 		.footer-label,
 		.footer-sub,
 		.footer-email {
-			font-size: 11px;
+			font-size: 12px;
 		}
 		.footer-email {
 			margin-bottom: 14px;
 		}
 		.footer-trident {
-			width: 16px;
+			width: 18px;
 		}
 	}
 </style>
