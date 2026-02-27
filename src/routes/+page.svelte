@@ -340,7 +340,7 @@
 			margin-top: 10px;
 		}
 		.slider {
-			--slider-gap: 2px;
+			--slider-gap: 4px;
 			--visible-slides: 3.5;
 		}
 		.slider-btn {
