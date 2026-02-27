@@ -421,10 +421,10 @@
 			width: 40%;
 		}
 		.footer-trident {
-			width: 24px;
+			width: 26.4px;
 		}
 		.floating-fork {
-			width: 24px;
+			width: 26.4px;
 		}
 	}
 
