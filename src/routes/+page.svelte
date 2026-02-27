@@ -135,6 +135,7 @@
 		--visible-slides: 3.5;
 		position: relative;
 		width: 100%;
+		margin-top: var(--slider-gap);
 		margin-bottom: 0;
 	}
 
