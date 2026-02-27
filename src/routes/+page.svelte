@@ -1,7 +1,9 @@
 <script>
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 
 	let sliderEl;
+	let forkEl;
 
 	function scrollSlider(direction) {
 		if (!sliderEl) return;
@@ -10,6 +12,54 @@
 			behavior: 'smooth'
 		});
 	}
+
+	onMount(() => {
+		if (!forkEl) return;
+
+		let rafId;
+		let x = Math.random() * (window.innerWidth - 40);
+		let y = Math.random() * (window.innerHeight - 40);
+		let vx = (Math.random() * 2 + 1.2) * (Math.random() > 0.5 ? 1 : -1);
+		let vy = (Math.random() * 2 + 1.2) * (Math.random() > 0.5 ? 1 : -1);
+		let angle = Math.random() * 360;
+		let va = (Math.random() - 0.5) * 2.2;
+
+		const tick = () => {
+			const w = forkEl.offsetWidth || 16;
+			const h = forkEl.offsetHeight || 24;
+
+			x += vx;
+			y += vy;
+			angle += va;
+
+			if (x <= 0) {
+				x = 0;
+				vx = Math.abs(vx);
+				va = (Math.random() - 0.5) * 3;
+			}
+			if (x + w >= window.innerWidth) {
+				x = window.innerWidth - w;
+				vx = -Math.abs(vx);
+				va = (Math.random() - 0.5) * 3;
+			}
+			if (y <= 0) {
+				y = 0;
+				vy = Math.abs(vy);
+				va = (Math.random() - 0.5) * 3;
+			}
+			if (y + h >= window.innerHeight) {
+				y = window.innerHeight - h;
+				vy = -Math.abs(vy);
+				va = (Math.random() - 0.5) * 3;
+			}
+
+			forkEl.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
+			rafId = requestAnimationFrame(tick);
+		};
+
+		rafId = requestAnimationFrame(tick);
+		return () => cancelAnimationFrame(rafId);
+	});
 
 	const slides = [
 		{ src: 'slide-1.jpg', alt: 'Slider Bild 01' },
@@ -25,6 +75,14 @@
 	<title>Le Birk — Private Dining Events · Berlin</title>
 	<meta name="description" content="Le Birk — Private Dining Events in Berlin" />
 </svelte:head>
+
+<img
+	bind:this={forkEl}
+	src="{base}/images/gabel.svg"
+	alt=""
+	aria-hidden="true"
+	class="floating-fork"
+/>
 
 <div class="page">
 	<!-- Logo + Tagline -->
@@ -94,6 +152,18 @@
 		margin: 0 auto;
 		padding: 0;
 		--banner-height: clamp(310px, 58vw, 580px);
+	}
+
+	.floating-fork {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 12px;
+		height: auto;
+		z-index: 9999;
+		pointer-events: none;
+		opacity: 0.95;
+		will-change: transform;
 	}
 
 	/* Logo */
@@ -292,6 +362,9 @@
 		.footer-trident {
 			width: 20px;
 		}
+		.floating-fork {
+			width: 20px;
+		}
 	}
 
 	/* Tablet */
@@ -382,6 +455,9 @@
 			margin-bottom: 14px;
 		}
 		.footer-trident {
+			width: 18px;
+		}
+		.floating-fork {
 			width: 18px;
 		}
 	}
