@@ -144,15 +144,10 @@
 />
 
 <div class="page">
-	<!-- Logo + Tagline -->
-	<section class="logo-section">
-		<img src="{base}/images/logotest.png" alt="Le Birk" class="logo" />
-		<p class="tagline">Private Dining Events · Berlin</p>
-	</section>
-
 	<!-- Hero -->
 	<section class="hero">
-		<img src="{base}/images/hero.jpg" alt="Le Birk dish" class="hero-image" />
+		<img src="{base}/images/closer.jpg" alt="Le Birk banner" class="hero-image" />
+		<img src="{base}/images/logotest.png" alt="Le Birk" class="logo logo-on-hero" />
 	</section>
 
 	<!-- Slider -->
@@ -200,7 +195,7 @@
 
 	<!-- Closer -->
 	<section class="full-image">
-		<img src="{base}/images/closer.jpg" alt="Lobster shells" />
+		<img src="{base}/images/hero.jpg" alt="Lobster shells" />
 	</section>
 
 	<!-- Footer -->
@@ -232,27 +227,16 @@
 		will-change: transform;
 	}
 
-	/* Logo */
-	.logo-section {
-		text-align: center;
-		padding: 48px 0 32px;
-	}
 	.logo {
 		width: 140px;
 		margin: 0 auto;
-	}
-	.tagline {
-		font-size: 13px;
-		font-weight: 300;
-		letter-spacing: 0.5px;
-		margin-top: 10px;
-		color: var(--color-text);
 	}
 
 	/* Hero */
 	.hero {
 		width: 100%;
 		margin-bottom: 0;
+		position: relative;
 	}
 	.hero img {
 		width: 100%;
@@ -263,6 +247,14 @@
 	}
 	.hero-image {
 		object-position: center 32%;
+	}
+	.logo-on-hero {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 3;
+		filter: brightness(0);
 	}
 
 	/* Slider */
@@ -411,10 +403,6 @@
 		.hero-image {
 			object-position: center 28%;
 		}
-		.tagline {
-			font-size: 20px;
-			margin-top: 14px;
-		}
 		.text-section {
 			font-size: 20px;
 		}
@@ -438,9 +426,6 @@
 
 	/* Tablet */
 	@media (max-width: 1100px) {
-		.logo-section {
-			padding: 40px 0 24px;
-		}
 		.logo {
 			width: 128px;
 		}
@@ -478,15 +463,8 @@
 		.hero-image {
 			object-position: center 36%;
 		}
-		.logo-section {
-			padding: 28px 0 18px;
-		}
 		.logo {
 			width: 110px;
-		}
-		.tagline {
-			font-size: 14px;
-			margin-top: 10px;
 		}
 		.slider {
 			--slider-gap: 2px;
