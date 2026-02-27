@@ -4,37 +4,6 @@
 
 	let sliderEl;
 	let forkEl;
-	let mouseDown = false;
-	let mouseStartX = 0;
-	let mouseStartScroll = 0;
-
-	function scrollSlider(direction) {
-		if (!sliderEl) return;
-		sliderEl.scrollBy({
-			left: direction * sliderEl.clientWidth * 0.72,
-			behavior: 'smooth'
-		});
-	}
-
-	function onSliderMouseDown(event) {
-		if (!sliderEl) return;
-		mouseDown = true;
-		mouseStartX = event.clientX;
-		mouseStartScroll = sliderEl.scrollLeft;
-	}
-
-	function onSliderMouseMove(event) {
-		if (!mouseDown || !sliderEl) return;
-		event.preventDefault();
-		const walk = (event.clientX - mouseStartX) * 1.2;
-		sliderEl.scrollLeft = mouseStartScroll - walk;
-	}
-
-	function onSliderMouseUp() {
-		if (!sliderEl) return;
-		mouseDown = false;
-	}
-
 	onMount(() => {
 		if (!forkEl) return;
 
@@ -189,16 +158,9 @@
 
 	<!-- Slider -->
 	<section class="slider" aria-label="Food gallery slider">
-		<button class="slider-btn prev" type="button" on:click={() => scrollSlider(-1)} aria-label="Vorherige Bilder">‹</button>
 		<div
 			class="slider-viewport"
 			bind:this={sliderEl}
-			on:mousedown={onSliderMouseDown}
-			on:mousemove={onSliderMouseMove}
-			on:mouseup={onSliderMouseUp}
-			on:mouseleave={onSliderMouseUp}
-			on:touchstart={onSliderMouseUp}
-			on:touchend={onSliderMouseUp}
 		>
 			<div class="slider-track">
 				{#each loopSlides as slide}
@@ -208,7 +170,6 @@
 				{/each}
 			</div>
 		</div>
-		<button class="slider-btn next" type="button" on:click={() => scrollSlider(1)} aria-label="Nächste Bilder">›</button>
 	</section>
 
 	<!-- Concept Text -->
@@ -312,7 +273,8 @@
 		-webkit-overflow-scrolling: touch;
 		scrollbar-width: none;
 		overscroll-behavior-x: contain;
-		touch-action: auto;
+		touch-action: none;
+		pointer-events: none;
 	}
 	.slider-viewport::-webkit-scrollbar { display: none; }
 
@@ -336,23 +298,6 @@
 		display: block;
 		pointer-events: none;
 	}
-
-	.slider-btn {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 2;
-		width: 28px;
-		height: 44px;
-		border: 0;
-		background: rgba(26, 26, 26, 0.35);
-		color: #fff;
-		font-size: 20px;
-		line-height: 1;
-		cursor: pointer;
-	}
-	.slider-btn.prev { left: 0; }
-	.slider-btn.next { right: 0; }
 
 	/* Text sections */
 	.text-section {
@@ -508,9 +453,6 @@
 		.slider {
 			--slider-gap: 2px;
 			--visible-slides: 3.5;
-		}
-		.slider-btn {
-			display: none;
 		}
 		.event-image img {
 			object-position: center 34%;
