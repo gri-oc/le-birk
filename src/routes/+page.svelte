@@ -4,6 +4,9 @@
 
 	let sliderEl;
 	let forkEl;
+	let mouseDown = false;
+	let mouseStartX = 0;
+	let mouseStartScroll = 0;
 
 	function scrollSlider(direction) {
 		if (!sliderEl) return;
@@ -11,6 +14,27 @@
 			left: direction * sliderEl.clientWidth * 0.72,
 			behavior: 'smooth'
 		});
+	}
+
+	function onSliderMouseDown(event) {
+		if (!sliderEl) return;
+		mouseDown = true;
+		sliderEl.classList.add('dragging');
+		mouseStartX = event.clientX;
+		mouseStartScroll = sliderEl.scrollLeft;
+	}
+
+	function onSliderMouseMove(event) {
+		if (!mouseDown || !sliderEl) return;
+		event.preventDefault();
+		const walk = (event.clientX - mouseStartX) * 1.2;
+		sliderEl.scrollLeft = mouseStartScroll - walk;
+	}
+
+	function onSliderMouseUp() {
+		if (!sliderEl) return;
+		mouseDown = false;
+		sliderEl.classList.remove('dragging');
 	}
 
 	onMount(() => {
@@ -99,7 +123,14 @@
 	<!-- Slider -->
 	<section class="slider" aria-label="Food gallery slider">
 		<button class="slider-btn prev" type="button" on:click={() => scrollSlider(-1)} aria-label="Vorherige Bilder">‹</button>
-		<div class="slider-viewport" bind:this={sliderEl}>
+		<div
+			class="slider-viewport"
+			bind:this={sliderEl}
+			on:mousedown={onSliderMouseDown}
+			on:mousemove={onSliderMouseMove}
+			on:mouseup={onSliderMouseUp}
+			on:mouseleave={onSliderMouseUp}
+		>
 			<div class="slider-track">
 				{#each slides as slide}
 					<div class="slider-item">
@@ -218,6 +249,9 @@
 		touch-action: auto;
 	}
 	.slider-viewport::-webkit-scrollbar { display: none; }
+	.slider-viewport.dragging {
+		cursor: grabbing;
+	}
 
 	.slider-track {
 		display: flex;
