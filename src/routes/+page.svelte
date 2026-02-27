@@ -412,18 +412,18 @@
 			object-position: center 28%;
 		}
 		.tagline {
-			font-size: 18px;
+			font-size: 30px;
 			margin-top: 14px;
 		}
 		.text-section {
-			font-size: 18px;
+			font-size: 30px;
 		}
 		.footer-label,
 		.footer-sub {
-			font-size: 18px;
+			font-size: 30px;
 		}
 		.footer-email {
-			font-size: 19px;
+			font-size: 30px;
 		}
 		.portrait {
 			width: 40%;
@@ -485,7 +485,7 @@
 			width: 110px;
 		}
 		.tagline {
-			font-size: 14px;
+			font-size: 15px;
 			margin-top: 10px;
 		}
 		.slider {
@@ -500,7 +500,7 @@
 		}
 		.text-section {
 			padding: 28px 14px;
-			font-size: 14px;
+			font-size: 15px;
 			line-height: 1.6;
 		}
 		.text-section p {
@@ -525,7 +525,7 @@
 		.footer-label,
 		.footer-sub,
 		.footer-email {
-			font-size: 14px;
+			font-size: 15px;
 		}
 		.footer-email {
 			margin-bottom: 14px;
