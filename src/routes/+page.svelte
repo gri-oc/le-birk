@@ -116,6 +116,7 @@
 		if (!sliderEl) return;
 
 		let groupWidth = 0;
+		let autoOffset = 0;
 		const getStepPx = () => (window.innerWidth <= 720 ? 0.01 : 0.22);
 
 		const recalcGroupWidth = () => {
@@ -124,13 +125,17 @@
 
 		const initLoopPosition = () => {
 			recalcGroupWidth();
-			if (groupWidth > 0) sliderEl.scrollLeft = groupWidth;
+			if (groupWidth > 0) {
+				autoOffset = groupWidth;
+				sliderEl.scrollLeft = autoOffset;
+			}
 		};
 
 		const wrapLoop = () => {
 			if (!sliderEl || !groupWidth) return;
-			if (sliderEl.scrollLeft <= 0) sliderEl.scrollLeft += groupWidth;
-			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
+			if (autoOffset <= 0) autoOffset += groupWidth;
+			if (autoOffset >= groupWidth * 2) autoOffset -= groupWidth;
+			sliderEl.scrollLeft = autoOffset;
 		};
 
 		const onResizePreservePosition = () => {
@@ -139,10 +144,10 @@
 				return;
 			}
 			const oldGroupWidth = groupWidth;
-			const offsetInLoop = ((sliderEl.scrollLeft % oldGroupWidth) + oldGroupWidth) % oldGroupWidth;
+			const offsetInLoop = ((autoOffset % oldGroupWidth) + oldGroupWidth) % oldGroupWidth;
 			recalcGroupWidth();
 			if (groupWidth > 0) {
-				sliderEl.scrollLeft = groupWidth + (offsetInLoop / oldGroupWidth) * groupWidth;
+				autoOffset = groupWidth + (offsetInLoop / oldGroupWidth) * groupWidth;
 				wrapLoop();
 			}
 		};
@@ -152,7 +157,7 @@
 
 		const intervalId = window.setInterval(() => {
 			if (!sliderEl) return;
-			sliderEl.scrollLeft -= getStepPx();
+			autoOffset -= getStepPx();
 			wrapLoop();
 		}, 16);
 
