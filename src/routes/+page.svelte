@@ -4,6 +4,7 @@
 
 	let sliderEl;
 	let forkEl;
+	let logoEl;
 	onMount(() => {
 		if (!forkEl) return;
 
@@ -88,6 +89,29 @@
 	});
 
 	onMount(() => {
+		if (!logoEl) return;
+
+		const updateLogoPosition = () => {
+			const logoHeight = logoEl.offsetHeight || 0;
+			const desktop = window.innerWidth > 1100;
+			const heroHeight = Math.max(window.innerHeight * 0.35, Math.min(window.innerHeight * 0.64, 650));
+			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
+			const minTop = desktop ? 30 : 18;
+			const top = desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
+			logoEl.style.top = `${top}px`;
+		};
+
+		updateLogoPosition();
+		window.addEventListener('scroll', updateLogoPosition, { passive: true });
+		window.addEventListener('resize', updateLogoPosition);
+
+		return () => {
+			window.removeEventListener('scroll', updateLogoPosition);
+			window.removeEventListener('resize', updateLogoPosition);
+		};
+	});
+
+	onMount(() => {
 		if (!sliderEl) return;
 
 		let groupWidth = 0;
@@ -167,7 +191,7 @@
 	<!-- Hero -->
 	<section class="hero">
 		<img src="{base}/images/banner-top.jpg?v=3" alt="Le Birk banner" class="hero-image" />
-		<img src="{base}/images/logotest.png" alt="Le Birk" class="logo logo-on-hero" />
+		<img bind:this={logoEl} src="{base}/images/logotest.png" alt="Le Birk" class="logo logo-on-hero" />
 	</section>
 
 	<!-- Slider -->
@@ -261,14 +285,15 @@
 		object-position: center 32%;
 	}
 	.logo-on-hero {
-		position: absolute;
-		top: 50%;
+		position: fixed;
+		top: 30px;
 		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 3;
+		transform: translateX(-50%);
+		z-index: 10001;
 		filter: none;
 		width: 140px;
 		height: auto;
+		pointer-events: none;
 	}
 
 	/* Slider */
