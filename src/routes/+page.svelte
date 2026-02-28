@@ -92,13 +92,13 @@
 		if (!logoEl) return;
 
 		const updateLogoPosition = () => {
-			const desktop = window.innerWidth > 1100;
 			const logoHeight = logoEl.offsetHeight || 0;
+			const desktop = window.innerWidth > 1100;
 			const heroHeight = Math.max(window.innerHeight * 0.35, Math.min(window.innerHeight * 0.64, 650));
-			const startCenterY = heroHeight * 0.5;
-			const minCenterY = (desktop ? 30 : 18) + logoHeight * 0.5;
-			const centerY = desktop ? Math.max(minCenterY, startCenterY - window.scrollY) : minCenterY;
-			logoEl.style.top = `${centerY}px`;
+			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
+			const minTop = desktop ? 30 : 18;
+			const top = desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
+			logoEl.style.top = `${top}px`;
 		};
 
 		updateLogoPosition();
@@ -286,9 +286,9 @@
 	}
 	.logo-on-hero {
 		position: fixed;
-		top: 50%;
+		top: 30px;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: translateX(-50%);
 		z-index: 10001;
 		filter: none;
 		width: 140px;
