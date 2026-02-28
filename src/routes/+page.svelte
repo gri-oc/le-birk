@@ -94,7 +94,8 @@
 		const updateLogoPosition = () => {
 			const logoHeight = logoEl.offsetHeight || 0;
 			const desktop = window.innerWidth > 1100;
-			const heroHeight = Math.max(window.innerHeight * 0.35, Math.min(window.innerHeight * 0.64, 650));
+			const baseHeroHeight = Math.max(window.innerHeight * 0.35, Math.min(window.innerHeight * 0.64, 650));
+			const heroHeight = desktop ? baseHeroHeight * (2 / 3) : baseHeroHeight;
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
 			const minTop = desktop ? 30 : 18;
 			const top = desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
@@ -418,6 +419,7 @@
 		}
 		.hero-image {
 			object-position: center 28%;
+			height: calc(var(--banner-height) * 0.6667);
 		}
 		.text-section {
 			font-size: 20px;
