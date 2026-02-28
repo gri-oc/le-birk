@@ -117,7 +117,7 @@
 
 		let groupWidth = 0;
 		let autoOffset = 0;
-		const getStepPx = () => (window.innerWidth <= 720 ? 0.1 : 2.8);
+		const getStepPx = () => (window.innerWidth <= 720 ? 2.0 : 1.8667);
 
 		const recalcGroupWidth = () => {
 			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
