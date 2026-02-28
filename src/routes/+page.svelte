@@ -108,8 +108,22 @@
 			if (sliderEl.scrollLeft >= groupWidth * 2) sliderEl.scrollLeft -= groupWidth;
 		};
 
+		const onResizePreservePosition = () => {
+			if (!sliderEl || !groupWidth) {
+				recalcGroupWidth();
+				return;
+			}
+			const oldGroupWidth = groupWidth;
+			const offsetInLoop = ((sliderEl.scrollLeft % oldGroupWidth) + oldGroupWidth) % oldGroupWidth;
+			recalcGroupWidth();
+			if (groupWidth > 0) {
+				sliderEl.scrollLeft = groupWidth + (offsetInLoop / oldGroupWidth) * groupWidth;
+				wrapLoop();
+			}
+		};
+
 		initLoopPosition();
-		window.setTimeout(initLoopPosition, 250);
+		window.setTimeout(onResizePreservePosition, 250);
 
 		const intervalId = window.setInterval(() => {
 			if (!sliderEl) return;
@@ -117,11 +131,11 @@
 			wrapLoop();
 		}, 16);
 
-		window.addEventListener('resize', initLoopPosition);
+		window.addEventListener('resize', onResizePreservePosition);
 
 		return () => {
 			clearInterval(intervalId);
-			window.removeEventListener('resize', initLoopPosition);
+			window.removeEventListener('resize', onResizePreservePosition);
 		};
 	});
 
