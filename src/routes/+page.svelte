@@ -91,7 +91,7 @@
 		if (!sliderEl) return;
 
 		let groupWidth = 0;
-		const getStepPx = () => (window.innerWidth <= 720 ? 0.01 : 0.22);
+		const getStepPx = () => (window.innerWidth <= 720 ? 0.005 : 0.22);
 
 		const recalcGroupWidth = () => {
 			groupWidth = sliderEl ? sliderEl.scrollWidth / 3 : 0;
