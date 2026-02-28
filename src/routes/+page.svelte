@@ -228,7 +228,7 @@
 
 	<!-- About Text -->
 	<section class="text-section about-text">
-		<p>Joschka Weins and Lukas Rosen — driven by the ambition to create unique evenings. What started as an idea among friends is now an event gastronomy that gives Berlin a slightly different taste.</p>
+		<p>Lukas Rosen and Joschka Weins — driven by the ambition to create unique evenings. What started as an idea among friends is now an event gastronomy that gives Berlin a slightly different taste.</p>
 		<p class="mt">“We believe that the best meals happen when high-end culinary standards meet the raw, unpolished energy of the city.”</p>
 	</section>
 
