@@ -462,7 +462,7 @@
 		}
 		.slider {
 			--slider-gap: 2px;
-			--visible-slides: 3.5;
+			--visible-slides: 2.6;
 		}
 		.event-image img {
 			object-position: center 34%;
