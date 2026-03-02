@@ -348,7 +348,7 @@
 		padding: 48px 24px;
 		font-size: 13px;
 		line-height: 1.7;
-		font-weight: 300;
+		font-weight: 400;
 	}
 	.text-section p {
 		max-width: 560px;
@@ -397,19 +397,19 @@
 	}
 	.footer-label {
 		font-size: 13px;
-		font-weight: 300;
+		font-weight: 400;
 		margin-bottom: 4px;
 	}
 	.footer-sub {
 		font-size: 13px;
-		font-weight: 300;
+		font-weight: 400;
 		margin-bottom: 16px;
 	}
 	.footer-email {
 		color: var(--color-red);
 		text-decoration: none;
 		font-size: 14px;
-		font-weight: 300;
+		font-weight: 400;
 		display: block;
 		margin-bottom: 24px;
 	}

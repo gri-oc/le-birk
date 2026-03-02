@@ -3,7 +3,7 @@
 :root {
 	--color-bg: #CEC2B2;
 	--color-text: #1a1a1a;
-	--color-red: #FF0000;
+	--color-red: #cb0202;
 	--font-body: 'Red Hat Mono', monospace;
 }
 
@@ -23,7 +23,7 @@ html, body {
 	background: var(--color-bg);
 	color: var(--color-text);
 	font-family: var(--font-body);
-	font-weight: 300;
+	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 }
 
