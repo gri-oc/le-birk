@@ -5,7 +5,6 @@
 	let sliderEl;
 	let forkEl;
 	let logoEl;
-	let logoReady = false;
 	onMount(() => {
 		if (!forkEl) return;
 
@@ -94,8 +93,9 @@
 
 		let rafId = 0;
 		const calcTop = () => {
-			const logoHeight = logoEl.offsetHeight || 0;
 			const desktop = window.innerWidth > 1100;
+			const logoWidth = window.innerWidth <= 720 ? 92 : 140;
+			const logoHeight = logoWidth * (1513 / 1295);
 			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
 			const minTop = desktop ? 30 : 18;
@@ -104,7 +104,6 @@
 
 		const renderLogoPosition = () => {
 			logoEl.style.top = `${calcTop()}px`;
-			if (!logoReady) logoReady = true;
 			rafId = 0;
 		};
 
@@ -114,7 +113,6 @@
 		};
 
 		scheduleRender();
-		window.setTimeout(scheduleRender, 120);
 		window.addEventListener('scroll', scheduleRender, { passive: true });
 		window.addEventListener('resize', scheduleRender);
 
@@ -209,7 +207,7 @@
 <div class="page">
 	<!-- Hero -->
 	<section class="hero hero-spacer">
-		<img bind:this={logoEl} src="{base}/images/logotest.png?v=2" alt="Le Birk" class="logo logo-on-hero" class:ready={logoReady} />
+		<img bind:this={logoEl} src="{base}/images/logotest.png?v=2" alt="Le Birk" class="logo logo-on-hero" />
 	</section>
 
 	<!-- Slider -->
@@ -316,11 +314,7 @@
 		width: 140px;
 		height: auto;
 		pointer-events: none;
-		opacity: 0;
-		transition: opacity 120ms linear;
-	}
-	.logo-on-hero.ready {
-		opacity: 1;
+		aspect-ratio: 1295 / 1513;
 	}
 
 	/* Slider */
