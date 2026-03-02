@@ -94,8 +94,7 @@
 		const updateLogoPosition = () => {
 			const logoHeight = logoEl.offsetHeight || 0;
 			const desktop = window.innerWidth > 1100;
-			const baseHeroHeight = Math.max(window.innerHeight * 0.35, Math.min(window.innerHeight * 0.64, 650));
-			const heroHeight = desktop ? baseHeroHeight * (2 / 3) : baseHeroHeight;
+			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
 			const minTop = desktop ? 30 : 18;
 			const top = desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
@@ -195,8 +194,7 @@
 
 <div class="page">
 	<!-- Hero -->
-	<section class="hero">
-		<img src="{base}/images/banner-top.jpg?v=3" alt="Le Birk banner" class="hero-image" />
+	<section class="hero hero-spacer">
 		<img bind:this={logoEl} src="{base}/images/logotestkontur.png?v=1" alt="Le Birk" class="logo logo-on-hero" />
 	</section>
 
@@ -257,6 +255,7 @@
 		margin: 0 auto;
 		padding: 0;
 		--banner-height: clamp(310px, 58vw, 580px);
+		color: var(--color-red);
 	}
 
 	.floating-fork {
@@ -281,6 +280,9 @@
 		width: 100%;
 		margin-bottom: 0;
 		position: relative;
+	}
+	.hero-spacer {
+		height: clamp(150px, 26vh, 260px);
 	}
 	.hero-image {
 		width: 100%;
@@ -422,6 +424,9 @@
 		.page {
 			--banner-height: clamp(350px, 64vw, 650px);
 		}
+		.hero-spacer {
+			height: clamp(180px, 34vh, 320px);
+		}
 		.hero-image {
 			object-position: center 28%;
 			height: calc(var(--banner-height) * 0.6667);
@@ -482,6 +487,9 @@
 	@media (max-width: 720px) {
 		.page {
 			--banner-height: clamp(170px, 34vw, 240px);
+		}
+		.hero-spacer {
+			height: clamp(120px, 22vh, 180px);
 		}
 		.hero-image {
 			object-position: center 36%;
