@@ -5,6 +5,7 @@
 	let sliderEl;
 	let forkEl;
 	let logoEl;
+	let logoReady = false;
 	onMount(() => {
 		if (!forkEl) return;
 
@@ -91,23 +92,36 @@
 	onMount(() => {
 		if (!logoEl) return;
 
-		const updateLogoPosition = () => {
+		let rafId = 0;
+		const calcTop = () => {
 			const logoHeight = logoEl.offsetHeight || 0;
 			const desktop = window.innerWidth > 1100;
 			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
 			const minTop = desktop ? 30 : 18;
-			const top = desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
-			logoEl.style.top = `${top}px`;
+			return desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
 		};
 
-		updateLogoPosition();
-		window.addEventListener('scroll', updateLogoPosition, { passive: true });
-		window.addEventListener('resize', updateLogoPosition);
+		const renderLogoPosition = () => {
+			logoEl.style.top = `${calcTop()}px`;
+			if (!logoReady) logoReady = true;
+			rafId = 0;
+		};
+
+		const scheduleRender = () => {
+			if (rafId) return;
+			rafId = requestAnimationFrame(renderLogoPosition);
+		};
+
+		scheduleRender();
+		window.setTimeout(scheduleRender, 120);
+		window.addEventListener('scroll', scheduleRender, { passive: true });
+		window.addEventListener('resize', scheduleRender);
 
 		return () => {
-			window.removeEventListener('scroll', updateLogoPosition);
-			window.removeEventListener('resize', updateLogoPosition);
+			if (rafId) cancelAnimationFrame(rafId);
+			window.removeEventListener('scroll', scheduleRender);
+			window.removeEventListener('resize', scheduleRender);
 		};
 	});
 
@@ -195,7 +209,7 @@
 <div class="page">
 	<!-- Hero -->
 	<section class="hero hero-spacer">
-		<img bind:this={logoEl} src="{base}/images/logotestkontur.png?v=1" alt="Le Birk" class="logo logo-on-hero" />
+		<img bind:this={logoEl} src="{base}/images/logotestkontur.png?v=1" alt="Le Birk" class="logo logo-on-hero" class:ready={logoReady} />
 	</section>
 
 	<!-- Slider -->
@@ -302,6 +316,11 @@
 		width: 140px;
 		height: auto;
 		pointer-events: none;
+		opacity: 0;
+		transition: opacity 120ms linear;
+	}
+	.logo-on-hero.ready {
+		opacity: 1;
 	}
 
 	/* Slider */
