@@ -192,8 +192,8 @@
 </script>
 
 <svelte:head>
-	<title>Le Birk — Private Dining Events · Berlin</title>
-	<meta name="description" content="Le Birk — Private Dining Events in Berlin" />
+	<title>LeBIRK — Private Dining Events · Berlin</title>
+	<meta name="description" content="LeBIRK — Private Dining Events in Berlin" />
 </svelte:head>
 
 <img
