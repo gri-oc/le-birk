@@ -207,7 +207,7 @@
 <div class="page">
 	<!-- Hero -->
 	<section class="hero hero-spacer">
-		<img bind:this={logoEl} src="{base}/images/logotest.png?v=2" alt="Le Birk" class="logo logo-on-hero" />
+		<img bind:this={logoEl} src="{base}/images/logo.svg" alt="Le Birk" class="logo logo-on-hero" />
 	</section>
 
 	<!-- Slider -->
