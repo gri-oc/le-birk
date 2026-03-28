@@ -95,14 +95,14 @@
 		const calcTop = () => {
 			const desktop = window.innerWidth > 1100;
 			const mobile = window.innerWidth <= 720;
-			const logoWidth = mobile ? 122 : 140;
+			const logoWidth = mobile ? 128 : 140;
 			const logoRatio = logoEl?.naturalWidth ? logoEl.naturalHeight / logoEl.naturalWidth : 676 / 1200;
 			const logoHeight = logoWidth * logoRatio;
 			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
-			const minTop = desktop ? 30 : 10;
+			const minTop = desktop ? 30 : 14;
 			if (desktop) return Math.max(minTop, startTop - window.scrollY);
-			return Math.max(minTop, Math.min(32, startTop + 6));
+			return Math.max(minTop, Math.min(40, startTop + 12));
 		};
 
 		const renderLogoPosition = () => {
@@ -514,7 +514,7 @@
 			width: 110px;
 		}
 		.logo-on-hero {
-			width: 122px;
+			width: 128px;
 		}
 		.slider {
 			--slider-gap: 2px;
