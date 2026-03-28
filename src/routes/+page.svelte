@@ -94,13 +94,15 @@
 		let rafId = 0;
 		const calcTop = () => {
 			const desktop = window.innerWidth > 1100;
-			const logoWidth = window.innerWidth <= 720 ? 108 : 140;
+			const mobile = window.innerWidth <= 720;
+			const logoWidth = mobile ? 122 : 140;
 			const logoRatio = logoEl?.naturalWidth ? logoEl.naturalHeight / logoEl.naturalWidth : 676 / 1200;
 			const logoHeight = logoWidth * logoRatio;
 			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
-			const minTop = desktop ? 30 : 18;
-			return desktop ? Math.max(minTop, startTop - window.scrollY) : minTop;
+			const minTop = desktop ? 30 : 10;
+			if (desktop) return Math.max(minTop, startTop - window.scrollY);
+			return Math.max(minTop, Math.min(32, startTop + 6));
 		};
 
 		const renderLogoPosition = () => {
@@ -512,7 +514,7 @@
 			width: 110px;
 		}
 		.logo-on-hero {
-			width: 108px;
+			width: 122px;
 		}
 		.slider {
 			--slider-gap: 2px;
