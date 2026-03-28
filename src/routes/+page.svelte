@@ -95,7 +95,7 @@
 		const calcTop = () => {
 			const desktop = window.innerWidth > 1100;
 			const mobile = window.innerWidth <= 720;
-			const logoWidth = mobile ? 128 : 140;
+			const logoWidth = mobile ? 154 : 140;
 			const logoRatio = logoEl?.naturalWidth ? logoEl.naturalHeight / logoEl.naturalWidth : 676 / 1200;
 			const logoHeight = logoWidth * logoRatio;
 			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
@@ -514,7 +514,7 @@
 			width: 110px;
 		}
 		.logo-on-hero {
-			width: 128px;
+			width: 154px;
 		}
 		.slider {
 			--slider-gap: 2px;
