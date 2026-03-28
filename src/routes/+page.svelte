@@ -94,7 +94,7 @@
 		let rafId = 0;
 		const calcTop = () => {
 			const desktop = window.innerWidth > 1100;
-			const logoWidth = window.innerWidth <= 720 ? 92 : 140;
+			const logoWidth = window.innerWidth <= 720 ? 108 : 140;
 			const logoHeight = logoWidth * (1513 / 1295);
 			const heroHeight = desktop ? Math.min(window.innerHeight * 0.34, 320) : Math.min(window.innerHeight * 0.26, 220);
 			const startTop = heroHeight * 0.5 - logoHeight * 0.5;
@@ -511,7 +511,7 @@
 			width: 110px;
 		}
 		.logo-on-hero {
-			width: 92px;
+			width: 108px;
 		}
 		.slider {
 			--slider-gap: 2px;
